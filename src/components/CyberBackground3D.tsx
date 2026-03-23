@@ -17,7 +17,7 @@ const ParticleField = () => {
     return positions;
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (pointsRef.current) {
       // Gentle drift
       pointsRef.current.rotation.y += delta * 0.05;
@@ -30,9 +30,7 @@ const ParticleField = () => {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particlesPosition.length / 3}
-          array={particlesPosition}
-          itemSize={3}
+          args={[particlesPosition, 3]}
         />
       </bufferGeometry>
       {/* Cyan particles to simulate neural/microservices nodes */}

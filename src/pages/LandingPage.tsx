@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Typography, Button, Container, Grid, Chip, TextField } from '@mui/material';
+import { Box, Typography, Button, Container, Chip } from '@mui/material';
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
 
 // Icons
@@ -205,8 +205,8 @@ export default function LandingPage() {
 
         {/* ABOUT (Split Layout) */}
         <Box id="about" sx={{ py: 15 }}>
-          <Grid container spacing={8} alignItems="center">
-            <Grid item xs={12} md={7}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '7fr 5fr' }, gap: 8, alignItems: 'center' }}>
+            <Box>
               <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 4 }}>System.Info()</Typography>
               <Typography sx={{ fontFamily: "'Sora', sans-serif", color: '#E8F4FD', fontSize: '1.1rem', lineHeight: 1.8, mb: 3 }}>
                 I'm a CDAC-certified Full Stack Developer with 1+ year of hands-on experience building real-world products at OTTplay.com — one of India's leading OTT aggregator platforms. 
@@ -214,15 +214,15 @@ export default function LandingPage() {
               <Typography sx={{ fontFamily: "'Sora', sans-serif", color: '#E8F4FD', fontSize: '1.1rem', lineHeight: 1.8 }}>
                 I specialize in React.js, Node.js, TypeScript, and Microservices architecture, and I thrive in Agile environments where clean code and fast delivery matter. Currently seeking global product engineering roles.
               </Typography>
-            </Grid>
-            <Grid item xs={12} md={5}>
+            </Box>
+            <Box>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                 <AnimatedStat num="1+ YRS" label="Experience" />
                 <AnimatedStat num="10+" label="Projects Built" />
                 <AnimatedStat num="5+" label="Core Technologies" />
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Box>
 
         {/* EXPERIENCE (Vertical Timeline) */}
@@ -260,13 +260,13 @@ export default function LandingPage() {
         {/* PROJECTS (3D Tilt Cards) */}
         <Box id="projects" sx={{ py: 15 }}>
           <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 8, textAlign: 'center' }}>Compile.Deploy()</Typography>
-          <Grid container spacing={4}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 4 }}>
             {projects.map(proj => (
-              <Grid item xs={12} md={6} key={proj.title}>
+              <Box key={proj.title}>
                 <GlassProjectCard project={proj} />
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Box>
 
         {/* SKILLS (Floating 3D Chips) */}
