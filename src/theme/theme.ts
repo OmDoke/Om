@@ -1,86 +1,61 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
-let theme = createTheme({
-    palette: {
-        mode: 'light',
-        primary: {
-            main: '#2563eb', // Royal Blue
-            light: '#60a5fa',
-            dark: '#1d4ed8',
-        },
-        secondary: {
-            main: '#7c3aed', // Purple/Violet
-        },
-        background: {
-            default: '#f8fafc', // Very subtle slate/gray
-            paper: '#ffffff',
-        },
-        text: {
-            primary: '#0f172a',
-            secondary: '#475569',
-        },
-        divider: 'rgba(15, 23, 42, 0.08)',
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    background: {
+      default: '#050A14',
+      paper: 'rgba(5, 10, 20, 0.6)',
     },
-    typography: {
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-        h1: {
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-        },
-        h2: {
-            fontWeight: 700,
-            letterSpacing: '-0.01em',
-        },
-        h3: {
-            fontWeight: 700,
-        },
-        h4: {
-            fontWeight: 700,
-        },
-        h5: {
-            fontWeight: 600,
-        },
-        h6: {
-            fontWeight: 600,
-        },
-        button: {
-            textTransform: 'none',
-            fontWeight: 600,
-        }
+    primary: {
+      main: '#00F5FF', // Electric Cyan
+      contrastText: '#050A14',
     },
-    shape: {
-        borderRadius: 12,
+    secondary: {
+      main: '#7B2FFF', // Neon Violet
+      contrastText: '#E8F4FD',
     },
-    components: {
-        MuiButton: {
-            styleOverrides: {
-                root: {
-                    borderRadius: 8,
-                    padding: '10px 24px',
-                    boxShadow: 'none',
-                    '&:hover': {
-                        boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)',
-                    }
-                },
-                outlined: {
-                    '&:hover': {
-                        boxShadow: 'none',
-                    }
-                }
-            }
+    text: {
+      primary: '#E8F4FD', // Icy White
+      secondary: '#3A4A5C', // Muted
+    },
+  },
+  typography: {
+    fontFamily: '"Sora", "Inter", "Helvetica", "Arial", sans-serif',
+    h1: { fontFamily: '"Orbitron", sans-serif' },
+    h2: { fontFamily: '"Orbitron", sans-serif' },
+    h3: { fontFamily: '"Orbitron", sans-serif' },
+    h4: { fontFamily: '"Orbitron", sans-serif' },
+    h5: { fontFamily: '"Orbitron", sans-serif' },
+    h6: { fontFamily: '"Orbitron", sans-serif' },
+    button: { fontFamily: '"Orbitron", sans-serif', textTransform: 'uppercase' },
+    overline: { fontFamily: '"JetBrains Mono", monospace' },
+    subtitle1: { fontFamily: '"JetBrains Mono", monospace' },
+    subtitle2: { fontFamily: '"JetBrains Mono", monospace' },
+    body1: { fontFamily: '"Sora", sans-serif' },
+    body2: { fontFamily: '"Sora", sans-serif' },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#050A14',
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#00F5FF #050A14',
         },
-        MuiCard: {
-            styleOverrides: {
-                root: {
-                    backgroundImage: 'none',
-                    boxShadow: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    border: '1px solid rgba(15, 23, 42, 0.05)',
-                }
-            }
-        }
-    }
+        '::-webkit-scrollbar': {
+          width: '8px',
+        },
+        '::-webkit-scrollbar-track': {
+          background: '#050A14',
+        },
+        '::-webkit-scrollbar-thumb': {
+          backgroundColor: '#00F5FF',
+          borderRadius: '4px',
+        },
+      },
+    },
+  },
 });
-
-theme = responsiveFontSizes(theme);
 
 export default theme;
