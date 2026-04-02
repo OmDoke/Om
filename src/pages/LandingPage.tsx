@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, Container, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -37,7 +36,7 @@ export default function LandingPage() {
       <Container maxWidth="lg" sx={{ py: 10, position: 'relative', zIndex: 2 }}>
         <Box id="about" sx={{ py: 10 }}>
           <Grid container spacing={8} alignItems="center">
-            <Grid item xs={12} md={7}>
+            <Grid size={{ xs: 12, md: 7 }}>
                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 3, fontWeight: 900 }}>
                     System.Info()
@@ -50,13 +49,13 @@ export default function LandingPage() {
                   </Typography>
                </motion.div>
             </Grid>
-            <Grid item xs={12} md={5}>
+            <Grid size={{ xs: 12, md: 5 }}>
                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {[
                     { label: 'YRS Experience', val: '1+' },
                     { label: 'Code Refactoring', val: '~40%' },
                     { label: 'Successful Projects', val: '10+' }
-                  ].map((stat, i) => (
+                  ].map((stat) => (
                     <motion.div key={stat.label} whileHover={{ x: 10 }}>
                       <Box sx={{ borderLeft: '3px solid #7B2FFF', pl: 3 }}>
                          <Typography variant="h3" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#7B2FFF', fontWeight: 900, fontSize: '2.5rem' }}>{stat.val}</Typography>
@@ -96,7 +95,7 @@ export default function LandingPage() {
           </Typography>
           <Grid container spacing={4}>
             {PROJECTS.map((proj) => (
-              <Grid item xs={12} md={6} key={proj.title}>
+              <Grid size={{ xs: 12, md: 6 }} key={proj.title}>
                 <ProjectCard project={proj} />
               </Grid>
             ))}

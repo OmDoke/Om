@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, Button, Chip } from '@mui/material';
 import { motion } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';

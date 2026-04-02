@@ -1,10 +1,10 @@
-import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import EmailIcon from '@mui/icons-material/Email';
 import { PERSONAL_INFO } from '../constants/data';
+import heroBg from '../assets/hero_cyber_bg.png';
 
 const NeonButton = ({ children, variant, href, icon, pulse }: { children: React.ReactNode, variant: 'solid' | 'outline', href?: string, icon?: React.ReactNode, pulse?: boolean }) => (
   <Button
@@ -36,7 +36,7 @@ export const Hero = () => {
     <Box sx={{ 
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden',
       backgroundColor: '#050A14', // Fallback color
-      backgroundImage: `linear-gradient(to right, rgba(5,10,20,0.95), rgba(5,10,20,0.4)), url('/hero_cyber_bg.png')`,
+      backgroundImage: `linear-gradient(to right, rgba(5,10,20,0.95), rgba(5,10,20,0.4)), url(${heroBg})`,
       backgroundSize: 'cover', backgroundPosition: 'center'
     }}>
 
