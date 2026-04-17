@@ -290,9 +290,11 @@ export default function NeuroChatWidget() {
                         fontSize: '14px',
                         fontFamily: 'var(--font-text)',
                         bgcolor: '#f5f5f7',
+                        color: '#1d1d1f',
                         '& fieldset': { borderColor: 'transparent' },
                         '&:hover fieldset': { borderColor: 'rgba(0,0,0,0.15)' },
                         '&.Mui-focused fieldset': { borderColor: '#0071e3', borderWidth: '1.5px' },
+                        '& input::placeholder': { color: 'rgba(0,0,0,0.5)' },
                       }
                     }}
                   />
