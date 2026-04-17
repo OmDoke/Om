@@ -127,14 +127,9 @@ export const CERTIFICATIONS = [
 
 export const EDUCATION = [
   {
-    degree: 'PG-DAC (Post Graduate Diploma in Advanced Computing)',
-    institution: 'C-DAC Pune',
-    year: '2025'
-  },
-  {
     degree: 'B.Tech in Computer Science',
     institution: 'Savitribai Phule Pune University',
-    year: '2023'
+    year: '2024'
   }
 ];
 
