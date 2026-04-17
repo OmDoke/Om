@@ -64,8 +64,8 @@ export default function NeuroChatWidget() {
       } else {
         setMessages(prev => [...prev, { role: 'ai', content: 'Connection Error: Unable to reach the AI engine.' }]);
       }
-    } catch (err) {
-      setMessages(prev => [...prev, { role: 'ai', content: "The AI server is waking up from sleep! ⏳ Please wait 30 seconds and try again — this only happens on the first message." }]);
+    } catch (err: any) {
+      setMessages(prev => [...prev, { role: 'ai', content: `Debug error: ${err?.message || String(err)}` }]);
     }
     
     setLoading(false);
