@@ -2,7 +2,6 @@ import { Box, Typography, Container, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
 // Components
-import CyberBackground3D from '../components/CyberBackground3D';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { ExperienceCard } from '../components/ExperienceCard';
@@ -12,74 +11,63 @@ import { SkillSection } from '../components/SkillSection';
 // Data
 import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS } from '../constants/data';
 
-// Icons
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TelegramIcon from '@mui/icons-material/Telegram';
-
 export default function LandingPage() {
   return (
-    <Box sx={{ bgcolor: '#01050A', minHeight: '100vh', color: '#E8F4FD', overflowX: 'hidden' }}>
+    <Box sx={{ backgroundColor: 'var(--bg-dark)', minHeight: '100vh', overflowX: 'hidden' }}>
       
-      {/* 3D Visual Layer */}
-      <Box sx={{ position: 'fixed', width: '100vw', height: '100vh', zIndex: 0, opacity: 0.3, pointerEvents: 'none' }}>
-        <CyberBackground3D />
-      </Box>
-
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Section */}
-      <Hero />
+      {/* Hero Section (Black) */}
+      <Box id="about" sx={{ backgroundColor: 'var(--bg-dark)' }}>
+        <Hero />
+      </Box>
 
-      {/* Impact Stats / Highlights */}
-      <Container maxWidth="lg" sx={{ py: 10, position: 'relative', zIndex: 2 }}>
-        <Box id="about" sx={{ py: 10 }}>
+      {/* Impact Stats / Highlights (Light Gray) */}
+      <Box sx={{ backgroundColor: 'var(--bg-light)', py: 15 }}>
+        <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
             <Grid size={{ xs: 12, md: 7 }}>
                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 3, fontWeight: 900 }}>
-                    System.Info()
+                  <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-dark)', mb: 3 }}>
+                    About.
                   </Typography>
-                  <Typography sx={{ fontFamily: "'Sora', sans-serif", fontSize: '1.25rem', lineHeight: 1.8, color: '#F0F4F8', fontWeight: 300, mb: 4 }}>
+                  <Typography sx={{ fontFamily: "var(--font-text)", fontSize: '21px', lineHeight: 1.47, color: 'var(--text-dark-secondary)', fontWeight: 400, mb: 4, letterSpacing: '-0.374px' }}>
                     {PERSONAL_INFO.summary}
                   </Typography>
-                  <Typography sx={{ fontFamily: "'Sora', sans-serif", fontSize: '1.1rem', lineHeight: 1.7, color: '#B0C4DE', maxWidth: '80%' }}>
+                  <Typography sx={{ fontFamily: "var(--font-text)", fontSize: '17px', lineHeight: 1.47, color: 'var(--text-dark-tertiary)', maxWidth: '80%', letterSpacing: '-0.374px' }}>
                     Current focus: Architecting React.js CMS systems and scalable MERN pipelines. Expertise in high-scale CRUD, RBAC security, and Docker-based delivery.
                   </Typography>
                </motion.div>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
-               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   {[
-                    { label: 'YRS Experience', val: '1+' },
+                    { label: 'Years Experience', val: '1+' },
                     { label: 'Code Refactoring', val: '~40%' },
                     { label: 'Successful Projects', val: '10+' }
                   ].map((stat) => (
                     <motion.div key={stat.label} whileHover={{ x: 10 }}>
-                      <Box sx={{ borderLeft: '3px solid #7B2FFF', pl: 3 }}>
-                         <Typography variant="h3" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#7B2FFF', fontWeight: 900, fontSize: '2.5rem' }}>{stat.val}</Typography>
-                         <Typography variant="body2" sx={{ fontFamily: "'JetBrains Mono', monospace", color: '#00F5FF', textTransform: 'uppercase', letterSpacing: '2px' }}>{stat.label}</Typography>
+                      <Box sx={{ borderLeft: '2px solid rgba(0,0,0,0.1)', pl: 4 }}>
+                         <Typography variant="h3" sx={{ fontFamily: "var(--font-display)", color: 'var(--text-dark)', fontWeight: 600, fontSize: '40px', letterSpacing: '-0.28px' }}>{stat.val}</Typography>
+                         <Typography variant="body2" sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-tertiary)', fontSize: '14px', letterSpacing: '-0.224px', mt: 1 }}>{stat.label}</Typography>
                       </Box>
                     </motion.div>
                   ))}
                </Box>
             </Grid>
           </Grid>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
 
-      {/* Experience Section */}
-      <Box id="experience" sx={{ py: 15, position: 'relative', bgcolor: 'rgba(5, 10, 20, 0.3)' }}>
+      {/* Experience Section (Black) */}
+      <Box id="experience" sx={{ py: 15, backgroundColor: 'var(--bg-dark)' }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 12, textAlign: 'center', fontWeight: 900 }}>
-            Execution.Log()
+          <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-light)', mb: 12, textAlign: 'center' }}>
+            Experience.
           </Typography>
           
           <Box sx={{ position: 'relative' }}>
-            {/* Center Timeline Line */}
-            <Box sx={{ position: 'absolute', left: { xs: '20px', md: '50%' }, top: 0, bottom: 0, width: '2px', background: 'linear-gradient(180deg, transparent, #00F5FF, transparent)', opacity: 0.2 }} />
-            
             {EXPERIENCE.map((exp, i) => (
               <ExperienceCard key={exp.company} exp={exp} index={i} />
             ))}
@@ -87,11 +75,11 @@ export default function LandingPage() {
         </Container>
       </Box>
 
-      {/* Projects Section */}
-      <Box id="projects" sx={{ py: 15, position: 'relative' }}>
+      {/* Projects Section (Light Gray) */}
+      <Box id="projects" sx={{ py: 15, backgroundColor: 'var(--bg-light)' }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 12, textAlign: 'center', fontWeight: 900 }}>
-            Compile.Deploy()
+          <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-dark)', mb: 12, textAlign: 'center' }}>
+            Projects.
           </Typography>
           <Grid container spacing={4}>
             {PROJECTS.map((proj) => (
@@ -103,41 +91,41 @@ export default function LandingPage() {
         </Container>
       </Box>
 
-      {/* Skill Grid */}
-      <Box sx={{ py: 15, background: 'linear-gradient(180deg, transparent, rgba(123, 47, 255, 0.05))' }}>
+      {/* Skill Grid (Black) */}
+      <Box sx={{ py: 15, backgroundColor: 'var(--bg-dark)' }}>
         <Container maxWidth="md">
-          <Typography variant="h2" sx={{ fontFamily: "'Orbitron', sans-serif", color: '#00F5FF', mb: 10, textAlign: 'center', fontWeight: 900 }}>
-            Tech.Stack()
+          <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-light)', mb: 10, textAlign: 'center' }}>
+            Tech Stack.
           </Typography>
-          <SkillSection title="Core & Frontend" skills={SKILLS.frontend} color="#00F5FF" />
-          <SkillSection title="Backend & Logic" skills={SKILLS.backend} color="#7B2FFF" />
-          <SkillSection title="Data & Systems" skills={SKILLS.database} color="#00F5FF" />
-          <SkillSection title="Cloud & Deployment" skills={SKILLS.cloud} color="#7B2FFF" />
+          <SkillSection title="Core & Frontend" skills={SKILLS.frontend} color="#ffffff" theme="dark" />
+          <SkillSection title="Backend & Logic" skills={SKILLS.backend} color="#ffffff" theme="dark" />
+          <SkillSection title="Data & Systems" skills={SKILLS.database} color="#ffffff" theme="dark" />
+          <SkillSection title="Cloud & Deployment" skills={SKILLS.cloud} color="#ffffff" theme="dark" />
         </Container>
       </Box>
 
-      {/* Footer */}
-      <Box sx={{ py: 10, borderTop: '1px solid rgba(0, 245, 255, 0.1)', textAlign: 'center' }}>
+      {/* Footer (Light Gray) */}
+      <Box sx={{ py: 10, backgroundColor: 'var(--bg-light)', textAlign: 'center' }}>
         <Container maxWidth="sm">
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 5, mb: 4 }}>
              {[
-               { icon: <GitHubIcon />, href: PERSONAL_INFO.github, label: 'GitHub' },
-               { icon: <LinkedInIcon />, href: PERSONAL_INFO.linkedin, label: 'LinkedIn' },
-               { icon: <TelegramIcon />, href: PERSONAL_INFO.telegram, label: 'Telegram' }
+               { href: PERSONAL_INFO.github, label: 'GitHub' },
+               { href: PERSONAL_INFO.linkedin, label: 'LinkedIn' },
+               { href: PERSONAL_INFO.telegram, label: 'Telegram' }
              ].map((social) => (
                <motion.a 
                  key={social.label} 
                  href={social.href} 
                  target="_blank" 
-                 whileHover={{ y: -10, scale: 1.2, color: '#00F5FF' }} 
-                 style={{ color: '#E8F4FD' }}
+                 whileHover={{ y: -5, color: 'var(--apple-link-blue)' }} 
+                 style={{ color: 'var(--text-dark)', fontFamily: 'var(--font-text)', fontSize: '14px', textDecoration: 'none', transition: 'color 0.2s', letterSpacing: '-0.224px' }}
                >
-                 {social.icon}
+                 {social.label}
                </motion.a>
              ))}
           </Box>
-          <Typography sx={{ fontFamily: "'JetBrains Mono', monospace", color: '#3A4A5C', fontSize: '0.9rem' }}>
-            © 2026 {PERSONAL_INFO.name}. Designed for high-impact production roles.
+          <Typography sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-tertiary)', fontSize: '12px', letterSpacing: '-0.12px' }}>
+            © 2026 {PERSONAL_INFO.name}. minimalist ui design.
           </Typography>
         </Container>
       </Box>

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Allow AI Scraping bots to ingest standard textual pages
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+# Specifically point them to the AI-optimized document
+Sitemap: https://omdoke.vercel.app/robot.md
