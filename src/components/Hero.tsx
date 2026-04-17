@@ -63,7 +63,7 @@ export const Hero = () => {
               letterSpacing: '-0.374px'
             }}
           >
-            Engineering high-performance MERN solutions. 40% code duplication reduction at OTTplay CMS. Scale. Impact. Code.
+            CDAC-certified MERN developer who has shipped production code at OTTplay — a CMS used by HT Media's editorial teams every day. I build things that actually work in teams, not just in demos.
           </Typography>
           
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>

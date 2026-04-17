@@ -1,4 +1,4 @@
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 
 export const Navbar = () => {
@@ -18,19 +18,7 @@ export const Navbar = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-        <Typography 
-          sx={{ 
-            fontFamily: "var(--font-display)", 
-            color: '#fff', 
-            fontWeight: 600, 
-            fontSize: '14px',
-            position: 'absolute',
-            left: 24
-          }}
-        >
-          CompanyLogo
-        </Typography>
-        
+
         <Box sx={{ display: 'flex', gap: { xs: 3, md: 5 } }}>
           {['About', 'Experience', 'Projects'].map((item) => (
             <motion.a 

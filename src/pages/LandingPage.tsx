@@ -9,7 +9,7 @@ import { ProjectCard } from '../components/ProjectCard';
 import { SkillSection } from '../components/SkillSection';
 
 // Data
-import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS } from '../constants/data';
+import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS, CERTIFICATIONS, EDUCATION } from '../constants/data';
 
 export default function LandingPage() {
   return (
@@ -23,7 +23,7 @@ export default function LandingPage() {
         <Hero />
       </Box>
 
-      {/* Impact Stats / Highlights (Light Gray) */}
+      {/* About Section (Light Gray) */}
       <Box sx={{ backgroundColor: 'var(--bg-light)', py: 15 }}>
         <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
@@ -36,16 +36,16 @@ export default function LandingPage() {
                     {PERSONAL_INFO.summary}
                   </Typography>
                   <Typography sx={{ fontFamily: "var(--font-text)", fontSize: '17px', lineHeight: 1.47, color: 'var(--text-dark-tertiary)', maxWidth: '80%', letterSpacing: '-0.374px' }}>
-                    Current focus: Architecting React.js CMS systems and scalable MERN pipelines. Expertise in high-scale CRUD, RBAC security, and Docker-based delivery.
+                    Currently focused on architecting React.js CMS systems and MERN pipelines — with a strong interest in fintech and product-led teams.
                   </Typography>
                </motion.div>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   {[
-                    { label: 'Years Experience', val: '1+' },
-                    { label: 'Code Refactoring', val: '~40%' },
-                    { label: 'Successful Projects', val: '10+' }
+                    { label: 'Production Internships', val: '2' },
+                    { label: 'Full-Stack Projects Deployed', val: '2' },
+                    { label: 'CDAC Certified', val: '2025' }
                   ].map((stat) => (
                     <motion.div key={stat.label} whileHover={{ x: 10 }}>
                       <Box sx={{ borderLeft: '2px solid rgba(0,0,0,0.1)', pl: 4 }}>
@@ -83,7 +83,7 @@ export default function LandingPage() {
           </Typography>
           <Grid container spacing={4}>
             {PROJECTS.map((proj) => (
-              <Grid size={{ xs: 12, md: 6 }} key={proj.title}>
+              <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={proj.title}>
                 <ProjectCard project={proj} />
               </Grid>
             ))}
@@ -101,6 +101,57 @@ export default function LandingPage() {
           <SkillSection title="Backend & Logic" skills={SKILLS.backend} color="#ffffff" theme="dark" />
           <SkillSection title="Data & Systems" skills={SKILLS.database} color="#ffffff" theme="dark" />
           <SkillSection title="Cloud & Deployment" skills={SKILLS.cloud} color="#ffffff" theme="dark" />
+        </Container>
+      </Box>
+
+      {/* Certifications & Education (Light Gray) */}
+      <Box sx={{ py: 15, backgroundColor: 'var(--bg-light)' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={8}>
+            {/* Certifications */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-dark)', mb: 6 }}>
+                  Certifications.
+                </Typography>
+                {CERTIFICATIONS.map((cert) => (
+                  <Box key={cert.title} sx={{ borderLeft: '2px solid rgba(0,0,0,0.12)', pl: 4, mb: 4 }}>
+                    <Typography sx={{ fontFamily: "var(--font-display)", color: 'var(--text-dark)', fontWeight: 600, fontSize: '20px', mb: 0.5, letterSpacing: '0.196px' }}>
+                      {cert.title}
+                    </Typography>
+                    <Typography sx={{ fontFamily: "var(--font-text)", color: '#0071e3', fontSize: '15px', mb: 1, fontWeight: 500 }}>
+                      {cert.issuer} · {cert.year}
+                    </Typography>
+                    <Typography sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-tertiary)', fontSize: '14px', lineHeight: 1.5, letterSpacing: '-0.224px' }}>
+                      {cert.detail}
+                    </Typography>
+                  </Box>
+                ))}
+              </motion.div>
+            </Grid>
+
+            {/* Education */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <Typography variant="h2" className="sf-section" sx={{ color: 'var(--text-dark)', mb: 6 }}>
+                  Education.
+                </Typography>
+                {EDUCATION.map((edu) => (
+                  <Box key={edu.degree} sx={{ borderLeft: '2px solid rgba(0,0,0,0.12)', pl: 4, mb: 5 }}>
+                    <Typography sx={{ fontFamily: "var(--font-display)", color: 'var(--text-dark)', fontWeight: 600, fontSize: '20px', mb: 0.5, letterSpacing: '0.196px' }}>
+                      {edu.degree}
+                    </Typography>
+                    <Typography sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-secondary)', fontSize: '15px', mb: 0.5 }}>
+                      {edu.institution}
+                    </Typography>
+                    <Typography sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-tertiary)', fontSize: '13px' }}>
+                      {edu.year}
+                    </Typography>
+                  </Box>
+                ))}
+              </motion.div>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
@@ -125,7 +176,7 @@ export default function LandingPage() {
              ))}
           </Box>
           <Typography sx={{ fontFamily: "var(--font-text)", color: 'var(--text-dark-tertiary)', fontSize: '12px', letterSpacing: '-0.12px' }}>
-            © 2026 {PERSONAL_INFO.name}. minimalist ui design.
+            © 2026 {PERSONAL_INFO.name}. All rights reserved.
           </Typography>
         </Container>
       </Box>
