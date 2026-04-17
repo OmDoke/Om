@@ -61,11 +61,13 @@ export default function NeuroChatWidget() {
       const data = await res.json();
       if (res.ok) {
         setMessages(prev => [...prev, { role: 'ai', content: data.answer }]);
+      } else if (res.status === 500 && data.detail?.includes('429')) {
+        setMessages(prev => [...prev, { role: 'ai', content: "I'm getting a lot of questions right now! 😅 Please wait 30 seconds and try again." }]);
       } else {
-        setMessages(prev => [...prev, { role: 'ai', content: 'Connection Error: Unable to reach the AI engine.' }]);
+        setMessages(prev => [...prev, { role: 'ai', content: 'Connection Error: ' + (data.detail || 'Unable to reach the AI engine.') }]);
       }
     } catch (err: any) {
-      setMessages(prev => [...prev, { role: 'ai', content: `Debug error: ${err?.message || String(err)}` }]);
+      setMessages(prev => [...prev, { role: 'ai', content: `Network error: ${err?.message || String(err)}` }]);
     }
     
     setLoading(false);
