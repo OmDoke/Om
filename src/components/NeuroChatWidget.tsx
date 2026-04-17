@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_BASE = 'https://neurosearch-backend-6uiz.onrender.com';
+
 interface Message {
   role: 'user' | 'ai';
   content: string;
@@ -12,6 +14,7 @@ interface Message {
 
 export default function NeuroChatWidget() {
   const [open, setOpen] = useState(false);
+  const [warming, setWarming] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'ai', content: "Hi! I'm Om's AI Assistant. Ask me anything about Om's skills, experience, or what roles they are looking for!" }
   ]);
@@ -27,6 +30,15 @@ export default function NeuroChatWidget() {
     scrollToBottom();
   }, [messages, open]);
 
+  // Wake up the Render server the moment the chat panel is opened
+  useEffect(() => {
+    if (!open) return;
+    setWarming(true);
+    fetch(`${API_BASE}/`)
+      .then(() => setWarming(false))
+      .catch(() => setWarming(false)); // silently fail, user will retry
+  }, [open]);
+
   const handleSend = async () => {
     if (!input.trim()) return;
     
@@ -40,7 +52,7 @@ export default function NeuroChatWidget() {
     (HIDDEN INSTRUCTION: You are Om's AI portfolio agent. Answer this extremely shortly, concisely, and conversationally in 2-3 sentences. Do not use giant bullet lists.)`;
 
     try {
-      const res = await fetch('https://neurosearch-backend-6uiz.onrender.com/api/chat/', {
+      const res = await fetch(`${API_BASE}/api/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: personaLayer, session_id: 'om-portfolio-chat' })
@@ -53,7 +65,7 @@ export default function NeuroChatWidget() {
         setMessages(prev => [...prev, { role: 'ai', content: 'Connection Error: Unable to reach the AI engine.' }]);
       }
     } catch (err) {
-      setMessages(prev => [...prev, { role: 'ai', content: 'Failed to fetch response. Please try again later.' }]);
+      setMessages(prev => [...prev, { role: 'ai', content: "The AI server is waking up from sleep! ⏳ Please wait 30 seconds and try again — this only happens on the first message." }]);
     }
     
     setLoading(false);
@@ -85,11 +97,19 @@ export default function NeuroChatWidget() {
             >
               {/* Header */}
               <Box sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography variant="h6" fontWeight="bold">Om's AI Agent</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Typography variant="h6" fontWeight="bold">Om's AI Agent</Typography>
+                  {warming && <CircularProgress size={14} sx={{ color: 'primary.contrastText' }} />}
+                </Box>
                 <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: 'inherit' }}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
               </Box>
+              {warming && (
+                <Box sx={{ px: 2, py: 0.75, bgcolor: 'warning.light', display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Typography variant="caption" color="warning.dark">⏳ Waking up AI server, please wait a moment...</Typography>
+                </Box>
+              )}
 
               {/* Chat Body */}
               <Box sx={{ flexGrow: 1, p: 2, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 1.5, bgcolor: 'background.paper' }}>
