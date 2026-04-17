@@ -144,12 +144,13 @@ export default function NeuroChatWidget() {
                   fullWidth
                   size="small"
                   variant="outlined"
-                  placeholder="Ask a question..."
+                  placeholder={warming ? 'Waiting for server to wake up...' : 'Ask a question...'}
                   value={input}
+                  disabled={warming}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 />
-                <IconButton color="primary" onClick={handleSend} disabled={!input.trim() || loading}>
+                <IconButton color="primary" onClick={handleSend} disabled={!input.trim() || loading || warming}>
                   <SendIcon />
                 </IconButton>
               </Box>
