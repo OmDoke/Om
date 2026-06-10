@@ -1,52 +1,150 @@
-import { Box, Typography, Chip } from '@mui/material';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { EXPERIENCE } from '../data/portfolioData';
 
-export const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
+export default function Experience() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) el.classList.add('visible');
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-      <Box sx={{ 
-        backgroundColor: 'var(--card-dark)', 
-        borderRadius: '12px', 
-        p: 4, 
-        mb: 4, 
-        width: '100%',
-        boxShadow: 'none'
-      }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', mb: 2 }}>
-          <Box>
-            <Typography sx={{ fontFamily: "var(--font-display)", color: '#ffffff', mb: 0.5, fontWeight: 600, fontSize: '24px', letterSpacing: '0.196px' }}>{exp.role}</Typography>
-            <Typography sx={{ fontFamily: "var(--font-text)", color: 'rgba(255,255,255,0.6)', fontWeight: 400, fontSize: '17px', letterSpacing: '-0.374px' }}>{exp.company}</Typography>
-          </Box>
-          <Box sx={{ textAlign: { xs: 'left', md: 'right' }, mt: { xs: 1, md: 0 } }}>
-            <Typography sx={{ fontFamily: "var(--font-text)", color: '#ffffff', fontWeight: 600, fontSize: '14px', letterSpacing: '-0.224px' }}>{exp.period}</Typography>
-            <Typography sx={{ fontFamily: "var(--font-text)", color: '#0071e3', fontSize: '12px', mt: 0.5 }}>{exp.impact}</Typography>
-          </Box>
-        </Box>
-        
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 3 }}>
-          {exp.description.map((item: string, i: number) => (
-            <Typography key={i} sx={{ fontFamily: "var(--font-text)", color: 'rgba(255,255,255,0.88)', fontSize: '14px', lineHeight: 1.43, letterSpacing: '-0.224px' }}>
-              {item}
-            </Typography>
+    <section id="experience">
+      <div className="section-inner">
+        <div className="section-label">// journey</div>
+        <h2 className="section-title">Experience</h2>
+        <p className="section-sub">
+          Building things that matter, one role at a time.
+        </p>
+
+        <div ref={ref} className="reveal">
+          {EXPERIENCE.map((item, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '140px 1fr',
+                gap: '2rem',
+                paddingBottom: '2.5rem',
+                position: 'relative',
+              }}
+            >
+              {/* Vertical connector line */}
+              {i < EXPERIENCE.length - 1 && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 136,
+                    top: 20,
+                    bottom: 0,
+                    width: 1,
+                    background: '#1e293b',
+                  }}
+                />
+              )}
+
+              {/* Timeline dot */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 128,
+                  top: 6,
+                  width: 16,
+                  height: 16,
+                  borderRadius: '50%',
+                  background: '#6366f1',
+                  border: '3px solid #080c14',
+                  boxShadow: '0 0 0 4px rgba(99,102,241,0.2)',
+                  zIndex: 2,
+                }}
+              />
+
+              {/* Date column */}
+              <div
+                style={{
+                  fontSize: '0.78rem',
+                  color: '#475569',
+                  fontFamily: 'JetBrains Mono, monospace',
+                  textAlign: 'right',
+                  paddingTop: 4,
+                  lineHeight: 1.4,
+                }}
+              >
+                {item.date}
+              </div>
+
+              {/* Content column */}
+              <div style={{ paddingLeft: '2rem' }}>
+                <div
+                  style={{
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    color: '#f1f5f9',
+                    marginBottom: 2,
+                  }}
+                >
+                  {item.role}
+                </div>
+                <div
+                  style={{
+                    color: '#6366f1',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  {item.company}
+                </div>
+                <div
+                  style={{
+                    color: '#94a3b8',
+                    fontSize: '0.875rem',
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {item.desc}
+                </div>
+
+                {/* Tech tags */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: 5,
+                    marginTop: '0.75rem',
+                  }}
+                >
+                  {item.tech.map((t) => (
+                    <span
+                      key={t}
+                      style={{
+                        background: 'rgba(6,182,212,0.1)',
+                        border: '1px solid rgba(6,182,212,0.2)',
+                        color: '#06b6d4',
+                        borderRadius: 6,
+                        padding: '2px 9px',
+                        fontSize: '0.7rem',
+                        fontFamily: 'JetBrains Mono, monospace',
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
-        </Box>
-        
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {exp.tech.map((t: string) => (
-            <Chip 
-              key={t} label={t} 
-              sx={{ 
-                bgcolor: 'rgba(255, 255, 255, 0.1)', 
-                color: '#ffffff', 
-                border: 'none', 
-                fontFamily: "var(--font-text)", 
-                fontSize: '12px',
-                height: '24px'
-              }} 
-            />
-          ))}
-        </Box>
-      </Box>
-    </motion.div>
+        </div>
+      </div>
+    </section>
   );
-};
+}
