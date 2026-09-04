@@ -8,7 +8,7 @@ export const PERSONAL = {
   tagline:
     'CDAC-certified Full-Stack Developer building production-grade web apps with the MERN stack, Java/Spring Boot, and a passion for clean, scalable, user-centric solutions.',
   location: 'Pune, Maharashtra, India',
-  phone: '+91-7745042879',
+  phone: '',
   email: 'onkardoke9696@gmail.com',
   linkedin: 'https://linkedin.com/in/onkar-doke',
   telegram: 'https://t.me/omdoke',
