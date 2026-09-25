@@ -69,7 +69,7 @@ export default function Skills() {
                 style={{
                   fontSize: '0.875rem',
                   fontWeight: 600,
-                  color: '#f1f5f9',
+                  color: 'var(--text-primary)',
                 }}
               >
                 {skill.name}
@@ -78,7 +78,7 @@ export default function Skills() {
               <div
                 style={{
                   height: 3,
-                  background: '#131929',
+                  background: 'var(--bg-tertiary)',
                   borderRadius: 2,
                   overflow: 'hidden',
                   marginTop: 2,
@@ -98,7 +98,7 @@ export default function Skills() {
               <div
                 style={{
                   fontSize: '0.7rem',
-                  color: '#475569',
+                  color: 'var(--text-secondary)',
                   fontFamily: 'JetBrains Mono, monospace',
                 }}
               >

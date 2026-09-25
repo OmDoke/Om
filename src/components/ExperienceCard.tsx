@@ -47,7 +47,7 @@ export default function Experience() {
                     top: 20,
                     bottom: 0,
                     width: 1,
-                    background: '#1e293b',
+                    background: 'var(--border)',
                   }}
                 />
               )}
@@ -61,9 +61,9 @@ export default function Experience() {
                   width: 16,
                   height: 16,
                   borderRadius: '50%',
-                  background: '#6366f1',
-                  border: '3px solid #080c14',
-                  boxShadow: '0 0 0 4px rgba(99,102,241,0.2)',
+                  background: 'var(--accent)',
+                  border: '3px solid var(--bg)',
+                  boxShadow: '0 0 0 4px rgba(16,185,129,0.2)',
                   zIndex: 2,
                 }}
               />
@@ -96,7 +96,7 @@ export default function Experience() {
                 </div>
                 <div
                   style={{
-                    color: '#6366f1',
+                    color: 'var(--accent)',
                     fontSize: '0.875rem',
                     fontWeight: 500,
                     marginBottom: '0.5rem',
@@ -127,9 +127,9 @@ export default function Experience() {
                     <span
                       key={t}
                       style={{
-                        background: 'rgba(6,182,212,0.1)',
-                        border: '1px solid rgba(6,182,212,0.2)',
-                        color: '#06b6d4',
+                        background: 'var(--bg-tertiary)',
+                        border: '1px solid var(--border)',
+                        color: 'var(--text-secondary)',
                         borderRadius: 6,
                         padding: '2px 9px',
                         fontSize: '0.7rem',

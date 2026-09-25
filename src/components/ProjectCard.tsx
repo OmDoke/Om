@@ -22,7 +22,7 @@ export default function Projects() {
       id="projects"
       style={{
         background:
-          'linear-gradient(180deg, transparent, rgba(99,102,241,0.03), transparent)',
+          'transparent',
       }}
     >
       <div className="section-inner">
@@ -101,9 +101,9 @@ export default function Projects() {
                   <span
                     key={tech}
                     style={{
-                      background: '#131929',
-                      border: '1px solid #1e293b',
-                      color: '#94a3b8',
+                      background: 'var(--bg-tertiary)',
+                      border: '1px solid var(--border)',
+                      color: 'var(--text-secondary)',
                       borderRadius: 6,
                       padding: '3px 9px',
                       fontSize: '0.72rem',
@@ -124,10 +124,10 @@ export default function Projects() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 5,
-                    color: '#6366f1',
+                    color: 'var(--accent)',
                     fontSize: '0.8rem',
-                    background: 'rgba(99,102,241,0.1)',
-                    border: '1px solid rgba(99,102,241,0.2)',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border)',
                     padding: '5px 12px',
                     borderRadius: 8,
                     transition: 'all 0.2s',
@@ -145,10 +145,10 @@ export default function Projects() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 5,
-                    color: '#6366f1',
+                    color: 'var(--accent)',
                     fontSize: '0.8rem',
-                    background: 'rgba(99,102,241,0.1)',
-                    border: '1px solid rgba(99,102,241,0.2)',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border)',
                     padding: '5px 12px',
                     borderRadius: 8,
                     transition: 'all 0.2s',

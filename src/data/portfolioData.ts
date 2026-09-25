@@ -6,13 +6,13 @@ export const PERSONAL = {
   nickname: 'Om',
   title: 'Full-Stack Developer (MERN · Java)',
   tagline:
-    'CDAC-certified Full-Stack Developer building production-grade web apps with the MERN stack, Java/Spring Boot, and a passion for clean, scalable, user-centric solutions.',
+    'CDAC-certified Full-Stack Developer delivering high-end UI/UX & scalable architecture. Specializing in MERN, Next.js, and Java/Spring Boot. Available for freelance projects and enterprise roles driving real business value.',
   location: 'Pune, Maharashtra, India',
   phone: '',
   email: 'onkardoke9696@gmail.com',
   linkedin: 'https://linkedin.com/in/onkar-doke',
   telegram: 'https://t.me/omdoke',
-  github: 'https://github.com/onkardoke',
+  github: 'https://github.com/OmDoke',
   website: 'https://omportfolio-umber.vercel.app',
   photo: '/om_p.png',
 };
@@ -51,13 +51,22 @@ export const SKILLS = [
 // Real shipped projects (MERN focus) + portfolio highlights
 export const PROJECTS = [
   {
+    tag: 'Next.js · SaaS',
+    title: 'Enterprise CRM',
+    desc: 'High-performance Customer Relationship Management platform built with Next.js 14, Tailwind CSS, and Prisma. Features role-based access, lead tracking pipelines, and polished micro-interactions designed for senior UI/UX standards.',
+    stack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind', 'Prisma', 'PostgreSQL'],
+    color: '#3b82f6',
+    demo: '#',
+    repo: 'https://github.com/OmDoke',
+  },
+  {
     tag: 'MERN · FinTech',
     title: 'SmartBank',
     desc: 'Full-stack MERN banking platform with JWT/bcrypt auth, RBAC, MongoDB aggregation pipelines for statements, and a full Docker + GitHub Actions CI/CD pipeline deployed to Render.',
     stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Redux', 'JWT', 'Docker'],
     color: '#06b6d4',
     demo: '#',
-    repo: 'https://github.com/onkardoke',
+    repo: 'https://github.com/OmDoke',
   },
   {
     tag: 'MERN · Real-time',
@@ -66,7 +75,7 @@ export const PROJECTS = [
     stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Docker'],
     color: '#10b981',
     demo: '#',
-    repo: 'https://github.com/onkardoke',
+    repo: 'https://github.com/OmDoke',
   },
   {
     tag: 'OTT · CMS',
@@ -75,7 +84,7 @@ export const PROJECTS = [
     stack: ['React.js', 'Redux Toolkit', 'JWT', 'REST API', 'GitHub Actions'],
     color: '#8b5cf6',
     demo: '#',
-    repo: 'https://github.com/onkardoke',
+    repo: 'https://github.com/OmDoke',
   },
   {
     tag: 'Java · Full-Stack',
@@ -84,7 +93,7 @@ export const PROJECTS = [
     stack: ['Java', 'Spring Boot', 'MySQL', 'PostgreSQL', 'REST API'],
     color: '#f89820',
     demo: '#',
-    repo: 'https://github.com/onkardoke',
+    repo: 'https://github.com/OmDoke',
   },
   {
     tag: 'AI · RAG',
@@ -138,7 +147,7 @@ export const AI_RESPONSES: Record<string, string> = {
   experience:
     "Onkar has 1.2+ years of internship experience. Currently a React.js Developer Intern at HT Labs (OTTplay) in Pune, where he's building a production CMS used by editorial teams daily. He previously interned as a Frontend Developer at Elite Softwares and holds a CDAC certification from C-DAC Pune (2025).",
   contact:
-    "You can reach Onkar at onkardoke9696@gmail.com, call or WhatsApp on +91-7745042879, connect on LinkedIn at linkedin.com/in/onkar-doke, or check his GitHub at github.com/onkardoke. He's based in Pune, Maharashtra!",
+    "You can reach Onkar at onkardoke9696@gmail.com, call or WhatsApp on +91-7745042879, connect on LinkedIn at linkedin.com/in/onkar-doke, or check his GitHub at github.com/OmDoke. He's based in Pune, Maharashtra!",
   available:
     "Yes! Onkar is actively looking for Full-Stack MERN, Java Full-Stack, or Java Backend roles — preferably hybrid or remote in SaaS or startup environments. CDAC-certified and ready to contribute from day one!",
   hire:

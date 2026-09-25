@@ -89,7 +89,7 @@ const CONTACT_LINKS = [
   {
     icon: '🐙',
     label: 'GitHub',
-    value: 'github.com/onkardoke',
+    value: 'github.com/OmDoke',
     href: PERSONAL.github,
   },
 ];

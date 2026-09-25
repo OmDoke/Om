@@ -20,10 +20,12 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Stats />
-        <SkillSection />
-        <ProjectCard />
-        <ExperienceCard />
+        <div className="container">
+          <Stats />
+          <SkillSection />
+          <ProjectCard />
+          <ExperienceCard />
+        </div>
         <NeuroChatWidget />
       </main>
       <Footer />

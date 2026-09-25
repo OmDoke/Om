@@ -1,139 +1,72 @@
-import { motion } from 'framer-motion';
-import AIAvatar from './AIAvatar';
+import { FaGithub as Github, FaLinkedin as Linkedin, FaCode as Code, FaDesktop as Monitor } from 'react-icons/fa';
+import { GitHubCalendar } from 'react-github-calendar';
 import { PERSONAL } from '../data/portfolioData';
 
 export default function Hero() {
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <section
-      id="about"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '7rem 2rem 4rem',
-        position: 'relative',
-        zIndex: 1,
-      }}
-    >
-      <div
-        className="hero-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '4rem',
-          alignItems: 'center',
-          maxWidth: 1100,
-          margin: '0 auto',
-          width: '100%',
-        }}
-      >
-        {/* ── LEFT — Text ───────────────────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-        >
-          {/* Availability badge */}
-          <div className="hero-badge-wrap" style={{ display: 'flex', marginBottom: '1.5rem' }}>
-            <motion.div
-              className="hero-badge"
-              animate={{
-                boxShadow: [
-                  '0 0 0 0 rgba(99,102,241,0.2)',
-                  '0 0 0 8px rgba(99,102,241,0)',
-                  '0 0 0 0 rgba(99,102,241,0.2)',
-                ],
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                background: 'rgba(99,102,241,0.1)',
-                border: '1px solid rgba(99,102,241,0.3)',
-                borderRadius: 100,
-                padding: '6px 14px',
-                fontSize: '0.8rem',
-                color: '#6366f1',
-              }}
-            >
-              <motion.span
-                className="blink-dot"
-                style={{
-                  display: 'inline-block',
-                  width: 8,
-                  height: 8,
-                  background: '#10b981',
-                  borderRadius: '50%',
-                  flexShrink: 0,
-                }}
-              />
-              Available for opportunities
-            </motion.div>
-          </div>
-
-          {/* H1 */}
-          <h1
-            style={{
-              fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              marginBottom: '1rem',
-            }}
-          >
-            Hi, I'm{' '}
-            <span className="gradient-text">{PERSONAL.name}</span>
-            <br />
+    <section className="container" id="about">
+      <div className="hero-layout">
+        <div className="hero-content fade-in-up">
+          <h1 className="heading-1" style={{ marginBottom: '1.5rem' }}>
             {PERSONAL.title}
           </h1>
-
-          {/* Tagline */}
-          <p
-            style={{
-              color: '#94a3b8',
-              fontSize: '1.05rem',
-              marginBottom: '2rem',
-              maxWidth: 480,
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="text-muted" style={{ fontSize: '1.125rem', marginBottom: '2.5rem' }}>
             {PERSONAL.tagline}
           </p>
 
-          {/* CTA buttons */}
-          <div
-            className="hero-ctas"
-            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
-          >
-            <button
-              id="hero-view-projects"
-              className="btn-primary"
-              onClick={() => scrollTo('projects')}
-            >
-              ✦ View Projects
-            </button>
-            <button
-              id="hero-lets-talk"
-              className="btn-outline"
-              onClick={() => scrollTo('contact')}
-            >
-              Let's Talk →
-            </button>
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+            <a href="mailto:onkardoke9696@gmail.com" style={{ background: 'var(--accent)', color: 'var(--bg)', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, fontSize: '0.95rem', transition: 'all 0.2s', boxShadow: '0 4px 14px 0 rgba(16, 185, 129, 0.39)' }}>
+              Hire for Freelance
+            </a>
+            <a href="/resume.pdf" target="_blank" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', color: 'var(--text-primary)', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 500, fontSize: '0.95rem', transition: 'all 0.2s' }}>
+              Download Resume
+            </a>
           </div>
-        </motion.div>
 
-        {/* ── RIGHT — AI Avatar ──────────────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <AIAvatar />
-        </motion.div>
+          <div className="social-links">
+            <a href={PERSONAL.github} target="_blank" rel="noopener noreferrer" className="social-link">
+              <Github /> GitHub
+            </a>
+            <a href={PERSONAL.linkedin} target="_blank" rel="noopener noreferrer" className="social-link">
+              <Linkedin /> LinkedIn
+            </a>
+            <a href={PERSONAL.telegram} target="_blank" rel="noopener noreferrer" className="social-link">
+              <Monitor /> Telegram
+            </a>
+            <a href={PERSONAL.website} target="_blank" rel="noopener noreferrer" className="social-link">
+              <Code /> Portfolio
+            </a>
+          </div>
+        </div>
+
+        <div className="fade-in-up" style={{ animationDelay: '0.2s', width: '100%', maxWidth: '400px' }}>
+          <svg viewBox="0 0 1273 906" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto', opacity: 0.8 }}>
+            <g>
+              <path d="M318.587 315.483V510.936L477.544 431.391V236.949M318.587 315.483L159.63 236.949M318.587 315.483L477.544 236.949M318.587 315.483V509.925L159.63 589.469M318.587 315.483L159.63 237.286L0.673828 315.483M318.587 315.483L159.63 394.016M477.544 236.949L318.587 158.753L159.63 236.949M477.544 236.949V432.402M477.544 236.949L318.587 158.416L477.544 80.2192L636.5 158.416L477.544 236.949ZM159.63 236.949V79.5451M159.63 589.469V394.016M159.63 589.469L0.673828 509.925V315.483M0.673828 315.483L159.63 394.016M159.63 79.5451L318.587 1.34863L477.544 79.5451L318.587 158.079L159.63 79.5451ZM795.457 395.701V237.286M795.457 237.286L636.5 159.09L477.544 237.286M795.457 237.286L636.5 315.82M477.544 237.286V431.728L601.139 491.762M477.544 237.286L636.5 315.82M636.5 315.82V472.887M954.414 668.003V473.561M954.414 473.561L795.457 395.364L636.5 473.561L795.457 552.094M954.414 473.561L795.457 552.094M954.414 473.561V669.014M954.414 473.561L795.457 395.027L954.414 316.831L1113.37 395.027L954.414 473.561ZM795.457 552.094L636.5 473.898L477.544 552.094M795.457 552.094L636.5 630.628M477.544 552.094V746.534L636.5 826.078V630.628M477.544 552.094L636.5 630.628M795.457 709.498V904.949M795.457 709.498L636.5 630.965M795.457 709.498L954.414 630.965M795.457 904.949L954.414 825.404V630.965M795.457 904.949L636.5 825.404V630.965M636.5 630.965L795.457 552.768L954.414 630.965M1113.37 552.431V747.882M1113.37 552.431L954.414 473.898M1113.37 552.431L1272.33 473.898M1113.37 747.882L1272.33 668.34V473.898M1113.37 747.882L954.414 668.34V473.898M954.414 473.898L1113.37 395.701L1272.33 473.898" stroke="var(--accent)" strokeOpacity="0.6" strokeWidth="2"></path>
+            </g>
+            <path d="M154 586C154 583.239 156.239 581 159 581V581C161.761 581 164 583.239 164 586V586C164 588.761 161.761 591 159 591V591C156.239 591 154 588.761 154 586V586Z" fill="var(--accent)"></path>
+            <path d="M154 393C154 390.239 156.239 388 159 388V388C161.761 388 164 390.239 164 393V393C164 395.761 161.761 398 159 398V398C156.239 398 154 395.761 154 393V393Z" fill="var(--accent)"></path>
+            <path d="M788 551C788 548.239 790.239 546 793 546V546C795.761 546 798 548.239 798 551V551C798 553.761 795.761 556 793 556V556C790.239 556 788 553.761 788 551V551Z" fill="var(--accent)"></path>
+            <path d="M1108 551C1108 548.239 1110.24 546 1113 546V546C1115.76 546 1118 548.239 1118 551V551C1118 553.761 1115.76 556 1113 556V556C1110.24 556 1108 553.761 1108 551V551Z" fill="var(--accent)"></path>
+            <path d="M1108 398C1108 395.239 1110.24 393 1113 393V393C1115.76 393 1118 395.239 1118 398V398C1118 400.761 1115.76 403 1113 403V403C1110.24 403 1108 400.761 1108 398V398Z" fill="var(--accent)"></path>
+            <path d="M788 237C788 234.239 790.239 232 793 232V232C795.761 232 798 234.239 798 237V237C798 239.761 795.761 242 793 242V242C790.239 242 788 239.761 788 237V237Z" fill="var(--accent)"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div className="fade-in-up" style={{ animationDelay: '0.4s', marginBottom: '4rem' }}>
+        <h2 className="section-title">Contribution Graph</h2>
+        <div className="graph-container">
+          <GitHubCalendar 
+            username="OmDoke" 
+            theme={{ 
+              light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+              dark: ['#27272a', '#064e3b', '#047857', '#059669', '#10b981']
+            }}
+            colorScheme="dark"
+            labels={{ totalCount: "{{count}} contributions in the last year" }}
+          />
+        </div>
       </div>
     </section>
   );
