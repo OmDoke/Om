@@ -164,13 +164,7 @@ export default function Contact() {
 
         <div
           ref={sectionRef}
-          className="reveal contact-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '3rem',
-            alignItems: 'start',
-          }}
+          className="reveal responsive-contact-grid"
         >
           {/* ── LEFT — Contact links ─────────────────────────────────────── */}
           <div>
@@ -206,7 +200,7 @@ export default function Contact() {
                     alignItems: 'center',
                     gap: '1rem',
                     borderRadius: 16,
-                    transition: 'all 0.25s',
+                    transition: 'border-color 0.2s, background 0.2s',
                   }}
                 >
                   <div
@@ -341,13 +335,13 @@ export default function Contact() {
                 <div
                   key={i}
                   style={{
-                    maxWidth: '80%',
+                    maxWidth: '85%',
                     padding: '0.6rem 1rem',
                     borderRadius:
                       m.role === 'ai'
                         ? '4px 12px 12px 12px'
                         : '12px 12px 4px 12px',
-                    fontSize: '0.85rem',
+                    fontSize: '0.875rem',
                     lineHeight: 1.55,
                     alignSelf:
                       m.role === 'ai' ? 'flex-start' : 'flex-end',
@@ -357,6 +351,7 @@ export default function Contact() {
                         : 'linear-gradient(135deg, #6366f1, #8b5cf6)',
                     color: '#f1f5f9',
                     wordBreak: 'break-word' as const,
+                    animation: 'fadeInUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                   }}
                 >
                   {m.text}
@@ -400,8 +395,8 @@ export default function Contact() {
                   border: '1px solid #1e293b',
                   color: '#f1f5f9',
                   borderRadius: 8,
-                  padding: '0.5rem 0.75rem',
-                  fontSize: '0.85rem',
+                  padding: '0.55rem 0.75rem',
+                  fontSize: '16px', /* Emil Kowalski rule: >=16px prevents iOS Safari auto-zoom */
                   outline: 'none',
                   fontFamily: 'Space Grotesk, sans-serif',
                   transition: 'border-color 0.2s',
@@ -423,7 +418,7 @@ export default function Contact() {
                   color: '#fff',
                   borderRadius: 8,
                   padding: '0.5rem 1.1rem',
-                  fontSize: '0.85rem',
+                  fontSize: '0.9rem',
                   cursor: 'pointer',
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontWeight: 500,

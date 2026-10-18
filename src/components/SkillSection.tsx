@@ -12,14 +12,14 @@ export default function Skills() {
       ([entry]) => {
         if (entry.isIntersecting) {
           grid.classList.add('visible');
-          // Stagger-animate each progress bar
+          // Stagger-animate each progress bar using GPU transform scaleX
           grid
             .querySelectorAll<HTMLDivElement>('.skill-fill')
             .forEach((bar, i) => {
               const level = SKILLS[i]?.level ?? 80;
               setTimeout(() => {
-                bar.style.width = level + '%';
-              }, 100 + i * 60);
+                bar.style.transform = `scaleX(${level / 100})`;
+              }, 40 + i * 35);
             });
         }
       },
@@ -59,7 +59,7 @@ export default function Skills() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 6,
-                transition: 'all 0.25s',
+                transition: 'border-color 0.2s, background 0.2s',
               }}
             >
               <div style={{ fontSize: '1.5rem', lineHeight: 1 }}>
@@ -88,10 +88,13 @@ export default function Skills() {
                   className="skill-fill"
                   style={{
                     height: '100%',
-                    width: '0%',
+                    width: '100%',
+                    transform: 'scaleX(0)',
+                    transformOrigin: 'left',
                     background: `linear-gradient(90deg, ${skill.color}88, ${skill.color})`,
                     borderRadius: 2,
-                    transition: 'width 1s ease',
+                    transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
+                    willChange: 'transform',
                   }}
                 />
               </div>

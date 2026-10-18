@@ -30,43 +30,15 @@ export default function Experience() {
           {EXPERIENCE.map((item, i) => (
             <div
               key={i}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '140px 1fr',
-                gap: '2rem',
-                paddingBottom: '2.5rem',
-                position: 'relative',
-              }}
+              className="timeline-row"
             >
               {/* Vertical connector line */}
               {i < EXPERIENCE.length - 1 && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 136,
-                    top: 20,
-                    bottom: 0,
-                    width: 1,
-                    background: 'var(--border)',
-                  }}
-                />
+                <div className="timeline-line" />
               )}
 
               {/* Timeline dot */}
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 128,
-                  top: 6,
-                  width: 16,
-                  height: 16,
-                  borderRadius: '50%',
-                  background: 'var(--accent)',
-                  border: '3px solid var(--bg)',
-                  boxShadow: '0 0 0 4px rgba(16,185,129,0.2)',
-                  zIndex: 2,
-                }}
-              />
+              <div className="timeline-dot" />
 
               {/* Date column */}
               <div
@@ -74,7 +46,6 @@ export default function Experience() {
                   fontSize: '0.78rem',
                   color: '#475569',
                   fontFamily: 'JetBrains Mono, monospace',
-                  textAlign: 'right',
                   paddingTop: 4,
                   lineHeight: 1.4,
                 }}
@@ -83,7 +54,7 @@ export default function Experience() {
               </div>
 
               {/* Content column */}
-              <div style={{ paddingLeft: '2rem' }}>
+              <div>
                 <div
                   style={{
                     fontSize: '1rem',
