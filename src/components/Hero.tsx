@@ -1,133 +1,64 @@
 import { FaGithub as Github, FaLinkedin as Linkedin, FaEnvelope as Envelope } from 'react-icons/fa';
 import { GitHubCalendar } from 'react-github-calendar';
 import { PERSONAL } from '../data/portfolioData';
+import { DoodleArrow, Scribble } from './Sketch';
+
+const MANIFEST = [
+  {
+    label: 'Backend service',
+    status: '33 tests passed ✓',
+    name: 'Spring Boot 3 · Java 17',
+    detail: '22 REST Endpoints · Redis Session Auth · BCrypt · MySQL',
+  },
+  {
+    label: 'RAG pipeline',
+    status: 'MMR top-8',
+    name: 'FastAPI · LangChain · Pinecone',
+    detail: '3072-dim Embeddings · Recursive Splitter (1000/200)',
+  },
+  {
+    label: 'Production CMS',
+    status: 'HT Labs Pune',
+    name: 'React · Redux Toolkit · TypeScript',
+    detail: 'OTTplay Editorial CMS · Reusable Component Architecture',
+  },
+];
 
 export default function Hero() {
   return (
     <section className="container" id="about">
-      <div className="hero-layout" style={{ alignItems: 'center', marginBottom: '3.5rem' }}>
+      <div className="hero-layout">
         <div className="hero-content fade-in-up">
-          {/* Status Badge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              backgroundColor: 'rgba(16, 185, 129, 0.08)',
-              border: '1px solid rgba(16, 185, 129, 0.25)',
-              padding: '0.4rem 0.9rem',
-              borderRadius: '999px',
-              fontSize: '0.82rem',
-              fontWeight: 500,
-              color: '#34d399',
-              marginBottom: '1.5rem',
-              fontFamily: 'var(--font-mono)',
-            }}
-          >
-            <span
-              style={{
-                width: '7px',
-                height: '7px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--accent)',
-                boxShadow: '0 0 8px var(--accent)',
-              }}
-            />
+          <div className="status-note">
+            <span className="status-dot" />
             Open to full-time roles · Pune / Remote
           </div>
 
-          <h1
-            className="heading-1"
-            style={{
-              marginBottom: '1.25rem',
-              lineHeight: 1.15,
-              fontWeight: 800,
-              letterSpacing: '-0.025em',
-            }}
-          >
-            Full Stack Engineer: Java/Spring Boot, React, and RAG systems
+          <h1 className="heading-1">
+            <span className="marker">Full Stack Engineer:</span> Java/Spring Boot, React, and RAG systems
           </h1>
 
-          <p
-            className="text-muted"
-            style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.65,
-              marginBottom: '2rem',
-              maxWidth: '38rem',
-            }}
-          >
+          <p className="text-muted hero-lede">
             I build secure Spring Boot backends and ship React frontends and LLM pipelines on top. CDAC PG-DAC 2025 · React/TypeScript at HT Labs (OTTplay).
           </p>
 
-          <div
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              marginTop: '1.5rem',
-              marginBottom: '2rem',
-              flexWrap: 'wrap',
-            }}
-          >
-            <a
-              href="#projects"
-              style={{
-                backgroundColor: 'var(--accent)',
-                color: '#090d16',
-                padding: '0.75rem 1.6rem',
-                borderRadius: '8px',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                transition: 'all 0.2s ease',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                boxShadow: '0 4px 14px rgba(16, 185, 129, 0.25)',
-              }}
-            >
+          <div className="cta-row">
+            <div className="cta-hint" aria-hidden="true">
+              <DoodleArrow className="drawn" />
+              <span className="hand-note">start here</span>
+            </div>
+            <a href="#projects" className="btn btn-ink">
               View Projects ↓
             </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                backgroundColor: 'var(--bg-secondary)',
-                border: '1px solid var(--border)',
-                color: 'var(--text-primary)',
-                padding: '0.75rem 1.6rem',
-                borderRadius: '8px',
-                fontWeight: 500,
-                fontSize: '0.95rem',
-                transition: 'all 0.2s ease',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-              }}
-            >
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn">
               Download Resume ↗
             </a>
-            <a
-              href="mailto:onkardoke9696@gmail.com"
-              style={{
-                backgroundColor: 'transparent',
-                border: '1px solid var(--border)',
-                color: 'var(--text-secondary)',
-                padding: '0.75rem 1.25rem',
-                borderRadius: '8px',
-                fontWeight: 500,
-                fontSize: '0.95rem',
-                transition: 'all 0.2s ease',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-              }}
-            >
+            <a href="mailto:onkardoke9696@gmail.com" className="btn btn-quiet">
               <Envelope /> Contact
             </a>
           </div>
 
-          <div className="social-links" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
+          <div className="social-links">
             <a href={PERSONAL.github} target="_blank" rel="noopener noreferrer" className="social-link">
               <Github /> GitHub (OmDoke)
             </a>
@@ -140,135 +71,29 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Clean Engineering Architecture Snapshot Card (Replacing Isometric Wireframe) */}
-        <div
-          className="fade-in-up"
-          style={{
-            animationDelay: '0.08s',
-            width: '100%',
-            maxWidth: '430px',
-            backgroundColor: 'var(--bg-secondary)',
-            border: '1px solid var(--border)',
-            borderRadius: '14px',
-            padding: '1.5rem',
-            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
-          }}
-        >
-          {/* Card Header: Terminal Dots */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingBottom: '1rem',
-              borderBottom: '1px solid var(--border)',
-              marginBottom: '1rem',
-            }}
-          >
-            <div style={{ display: 'flex', gap: '6px' }}>
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-            </div>
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
-                color: 'var(--text-secondary)',
-                letterSpacing: '0.04em',
-              }}
-            >
-              systems-manifest.json
-            </span>
-          </div>
-
-          {/* Architecture Items */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-            <div
-              style={{
-                backgroundColor: 'var(--bg)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                padding: '0.75rem 0.9rem',
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
-                  // BACKEND SERVICE
-                </span>
-                <span style={{ fontSize: '0.7rem', color: '#10b981', fontFamily: 'var(--font-mono)' }}>
-                  ● 33 tests passed
-                </span>
-              </div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                Spring Boot 3 · Java 17
-              </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
-                22 REST Endpoints · Redis Session Auth · BCrypt · MySQL
-              </div>
+        {/* Taped flyer: the stack, written up as a ruled table */}
+        <div className="fade-in-up" style={{ animationDelay: '0.08s', width: '100%', maxWidth: '430px' }}>
+          <div className="sketch-box manifest">
+            <span className="tape" aria-hidden="true" />
+            <div className="manifest-head">
+              <span className="manifest-title">the stack, sketched</span>
+              <span className="manifest-file">systems-manifest.json</span>
             </div>
 
-            <div
-              style={{
-                backgroundColor: 'var(--bg)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                padding: '0.75rem 0.9rem',
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#a78bfa' }}>
-                  // RAG PIPELINE
-                </span>
-                <span style={{ fontSize: '0.7rem', color: '#10b981', fontFamily: 'var(--font-mono)' }}>
-                  ● MMR Top-8
-                </span>
+            {MANIFEST.map((item) => (
+              <div key={item.label} className="manifest-row">
+                <div className="manifest-row-top">
+                  <span className="manifest-label">{item.label}</span>
+                  <span className="manifest-status">{item.status}</span>
+                </div>
+                <div className="manifest-name">{item.name}</div>
+                <div className="manifest-detail">{item.detail}</div>
               </div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                FastAPI · LangChain · Pinecone
-              </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
-                3072-dim Embeddings · Recursive Splitter (1000/200)
-              </div>
-            </div>
+            ))}
 
-            <div
-              style={{
-                backgroundColor: 'var(--bg)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                padding: '0.75rem 0.9rem',
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#34d399' }}>
-                  // PRODUCTION CMS
-                </span>
-                <span style={{ fontSize: '0.7rem', color: '#34d399', fontFamily: 'var(--font-mono)' }}>
-                  HT Labs Pune
-                </span>
-              </div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                React · Redux Toolkit · TypeScript
-              </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
-                OTTplay Editorial CMS · Reusable Component Architecture
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingTop: '0.4rem',
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-mono)',
-                color: 'var(--text-secondary)',
-              }}
-            >
+            <div className="manifest-foot">
               <span>Docker Compose: 4 services</span>
-              <span style={{ color: 'var(--accent)' }}>CDAC Certified (2025)</span>
+              <span className="stamp">CDAC Certified 2025</span>
             </div>
           </div>
         </div>
@@ -276,22 +101,21 @@ export default function Hero() {
 
       {/* GitHub Calendar */}
       <div className="fade-in-up" style={{ animationDelay: '0.14s', marginBottom: '3.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1rem' }}>
-          <h2 className="section-title" style={{ fontSize: '1.4rem', marginBottom: 0 }}>
+        <div className="activity-head">
+          <h2 className="activity-title title-ink">
             Engineering Activity
+            <Scribble className="drawn" />
           </h2>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-            github.com/OmDoke
-          </span>
+          <span className="meta-mono">github.com/OmDoke</span>
         </div>
-        <div className="graph-container">
+        <div className="sketch-box flat graph-container">
           <GitHubCalendar
             username="OmDoke"
             theme={{
-              light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-              dark: ['#27272a', '#064e3b', '#047857', '#059669', '#10b981'],
+              light: ['#e6dfcf', '#c9e4be', '#8fc18a', '#4a9a62', '#1f7a45'],
+              dark: ['#e6dfcf', '#c9e4be', '#8fc18a', '#4a9a62', '#1f7a45'],
             }}
-            colorScheme="dark"
+            colorScheme="light"
             labels={{ totalCount: '{{count}} contributions in the last year' }}
           />
         </div>

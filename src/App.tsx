@@ -9,6 +9,7 @@ import ExperienceCard from './components/ExperienceCard';
 import Education from './components/Education';
 import NeuroChatWidget from './components/NeuroChatWidget';
 import Footer from './components/Footer';
+import { SketchDefs } from './components/Sketch';
 
 export default function App() {
   // Force the page to start at the top on every mount
@@ -18,6 +19,7 @@ export default function App() {
 
   return (
     <>
+      <SketchDefs />
       <Navbar />
       <main>
         <Hero />

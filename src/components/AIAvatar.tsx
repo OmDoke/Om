@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSpeech } from '../hooks/useSpeech';
 import { PERSONAL } from '../data/portfolioData';
+import { CircleMark } from './Sketch';
 
 // ── Spoken scripts ─────────────────────────────────────────────────────────────
 const GREETING =
@@ -99,168 +100,63 @@ export default function AIAvatar({ onSpeak }: AIAvatarProps) {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '1.25rem',
-      }}
-    >
-      {/* ── AVATAR CIRCLE ──────────────────────────────────────────────────── */}
-      <div
-        className="avatar-wrapper-size"
-        style={{ position: 'relative', width: 280, height: 280 }}
-      >
-        {/* "Tap to hear" pulsing prompt — shown before first interaction */}
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
+      {/* ── AVATAR — ink portrait inside a hand-drawn ring ──────────────────── */}
+      <div className="avatar-wrapper-size" style={{ position: 'relative', width: 280, height: 280 }}>
+        {/* "Tap to hear" handwritten prompt — shown before first interaction */}
         <AnimatePresence>
           {showTap && (
             <motion.div
+              className="hand-note"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: [0.6, 1, 0.6], y: [0, -4, 0] }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               style={{
                 position: 'absolute',
-                top: -36,
+                top: -44,
                 left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
-                color: '#fff',
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                padding: '5px 12px',
-                borderRadius: 20,
+                x: '-50%',
                 whiteSpace: 'nowrap',
                 zIndex: 10,
                 pointerEvents: 'none',
-                letterSpacing: '0.05em',
               }}
             >
-              🔊 Click anywhere to hear Om's intro
+              click anywhere to hear Om's intro ↓
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Floating wrapper */}
         <motion.div
-          animate={{ y: [0, -12, 0] }}
+          animate={{ y: [0, -8, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            cursor: 'pointer',
-          }}
+          style={{ width: '100%', height: '100%', position: 'relative', cursor: 'pointer' }}
           onClick={handleAvatarClick}
           title="Click to hear Om's greeting"
         >
-          {/* Spinning conic ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-            style={{
-              position: 'absolute',
-              inset: -4,
-              borderRadius: '50%',
-              background: 'conic-gradient(from 0deg, #6366f1, #06b6d4, #6366f1)',
-              WebkitMask: 'radial-gradient(circle, transparent 124px, black 126px)',
-              mask:        'radial-gradient(circle, transparent 124px, black 126px)',
-              zIndex: 1,
-            }}
-          />
-
-          {/* "Tap to hear" outer glow ring (only before greeting) */}
-          <AnimatePresence>
-            {showTap && (
-              <motion.div
-                animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.9, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                exit={{ opacity: 0 }}
-                style={{
-                  position: 'absolute',
-                  inset: -10,
-                  borderRadius: '50%',
-                  border: '2px solid rgba(99,102,241,0.5)',
-                  zIndex: 0,
-                  pointerEvents: 'none',
-                }}
-              />
-            )}
-          </AnimatePresence>
-
-          {/* Photo / initials circle */}
-          <div
-            className="avatar-face-size"
-            style={{
-              position: 'absolute',
-              inset: 4,
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: '2px solid #1e293b',
-              zIndex: 2,
-              background: 'linear-gradient(135deg, #0d1220, #131929)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          {/* Photo / initials, printed in greyscale ink */}
+          <div className="avatar-portrait avatar-face-size">
             {!photoError ? (
-              <img
-                src={PERSONAL.photo}
-                alt={PERSONAL.name}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                onError={() => setPhotoError(true)}
-              />
+              <img src={PERSONAL.photo} alt={PERSONAL.name} onError={() => setPhotoError(true)} />
             ) : (
-              <div
-                style={{
-                  fontSize: '3.5rem',
-                  fontWeight: 700,
-                  background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  fontFamily: 'Space Grotesk, sans-serif',
-                }}
-              >
+              <div className="brand-mark" style={{ width: 'auto', height: 'auto', border: 'none', fontSize: '4.5rem' }}>
                 OD
               </div>
             )}
           </div>
 
-          {/* Speaking pulse ring */}
-          <AnimatePresence>
-            {isSpeaking && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, scale: [1, 1.04, 1] }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  scale: { duration: 0.6, repeat: Infinity, ease: 'easeInOut' },
-                }}
-                style={{
-                  position: 'absolute',
-                  inset: -4,
-                  borderRadius: '50%',
-                  border: '3px solid #06b6d4',
-                  boxShadow:
-                    '0 0 20px rgba(6,182,212,0.6), inset 0 0 20px rgba(6,182,212,0.1)',
-                  zIndex: 3,
-                  pointerEvents: 'none',
-                }}
-              />
-            )}
-          </AnimatePresence>
+          {/* Pen ring — redraws while speaking */}
+          <CircleMark key={isSpeaking ? 'speaking' : 'idle'} className="drawn avatar-ring" />
         </motion.div>
       </div>
 
-      {/* ── AUDIO VISUALISER BARS ───────────────────────────────────────────── */}
+      {/* ── AUDIO VISUALISER — pen strokes ──────────────────────────────────── */}
       <div
         style={{
           display: 'flex',
           alignItems: 'flex-end',
-          gap: 4,
+          gap: 5,
           height: 32,
           opacity: isSpeaking ? 1 : 0,
           transition: 'opacity 0.3s',
@@ -271,7 +167,7 @@ export default function AIAvatar({ onSpeak }: AIAvatarProps) {
             key={i}
             animate={isSpeaking ? { height: ['6px', '28px', '6px'] } : { height: '6px' }}
             transition={{ duration: dur, repeat: Infinity, ease: 'easeInOut', delay: i * 0.1 }}
-            style={{ width: 5, background: '#06b6d4', borderRadius: 3, minHeight: 6 }}
+            style={{ width: 4, background: 'var(--ink)', borderRadius: 3, minHeight: 6 }}
           />
         ))}
       </div>
@@ -279,66 +175,26 @@ export default function AIAvatar({ onSpeak }: AIAvatarProps) {
       {/* ── SPEECH BUBBLE ───────────────────────────────────────────────────── */}
       <motion.div
         key={bubbleText}
+        className="sketch-box flat speech-bubble"
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        style={{
-          background: '#111827',
-          border: '1px solid #1e293b',
-          borderRadius: '16px 16px 16px 4px',
-          padding: '1rem 1.25rem',
-          maxWidth: 320,
-          fontSize: '0.875rem',
-          color: '#94a3b8',
-          lineHeight: 1.6,
-          minHeight: 64,
-          display: 'flex',
-          alignItems: 'center',
-        }}
+        transition={{ duration: 0.25 }}
       >
         {bubbleText}
       </motion.div>
 
       {/* ── QUICK-ACTION BUTTONS ─────────────────────────────────────────────── */}
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
         {[
           { label: '🎙 Introduce Om', script: INTRO },
           { label: '💡 Skills',       script: SKILLS_SCRIPT },
           { label: '🚀 Projects',     script: PROJECTS_SCRIPT },
         ].map((btn) => (
-          <button
-            key={btn.label}
-            className="ai-btn"
-            onClick={() => handleSpeak(btn.script)}
-            style={{
-              background: 'rgba(99,102,241,0.1)',
-              border: '1px solid rgba(99,102,241,0.25)',
-              color: '#6366f1',
-              borderRadius: 8,
-              padding: '6px 14px',
-              fontSize: '0.78rem',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              fontFamily: 'Space Grotesk, sans-serif',
-            }}
-          >
+          <button key={btn.label} className="btn btn-sm ai-btn" onClick={() => handleSpeak(btn.script)}>
             {btn.label}
           </button>
         ))}
-        <button
-          onClick={handleStop}
-          style={{
-            background: 'rgba(239,68,68,0.1)',
-            border: '1px solid rgba(239,68,68,0.25)',
-            color: '#ef4444',
-            borderRadius: 8,
-            padding: '6px 14px',
-            fontSize: '0.78rem',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-            fontFamily: 'Space Grotesk, sans-serif',
-          }}
-        >
+        <button className="btn btn-sm btn-quiet" onClick={handleStop}>
           ⏹ Stop
         </button>
       </div>
