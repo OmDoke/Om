@@ -1,70 +1,298 @@
-import { FaGithub as Github, FaLinkedin as Linkedin, FaCode as Code, FaDesktop as Monitor } from 'react-icons/fa';
+import { FaGithub as Github, FaLinkedin as Linkedin, FaEnvelope as Envelope } from 'react-icons/fa';
 import { GitHubCalendar } from 'react-github-calendar';
 import { PERSONAL } from '../data/portfolioData';
 
 export default function Hero() {
   return (
     <section className="container" id="about">
-      <div className="hero-layout">
+      <div className="hero-layout" style={{ alignItems: 'center', marginBottom: '3.5rem' }}>
         <div className="hero-content fade-in-up">
-          <h1 className="heading-1" style={{ marginBottom: '1.5rem' }}>
-            {PERSONAL.title}
+          {/* Status Badge */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              backgroundColor: 'rgba(16, 185, 129, 0.08)',
+              border: '1px solid rgba(16, 185, 129, 0.25)',
+              padding: '0.4rem 0.9rem',
+              borderRadius: '999px',
+              fontSize: '0.82rem',
+              fontWeight: 500,
+              color: '#34d399',
+              marginBottom: '1.5rem',
+              fontFamily: 'var(--font-mono)',
+            }}
+          >
+            <span
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--accent)',
+                boxShadow: '0 0 8px var(--accent)',
+              }}
+            />
+            Open to full-time roles · Pune / Remote
+          </div>
+
+          <h1
+            className="heading-1"
+            style={{
+              marginBottom: '1.25rem',
+              lineHeight: 1.15,
+              fontWeight: 800,
+              letterSpacing: '-0.025em',
+            }}
+          >
+            Full Stack Engineer: Java/Spring Boot, React, and RAG systems
           </h1>
-          <p className="text-muted" style={{ fontSize: '1.125rem', marginBottom: '2.5rem' }}>
-            {PERSONAL.tagline}
+
+          <p
+            className="text-muted"
+            style={{
+              fontSize: '1.1rem',
+              lineHeight: 1.65,
+              marginBottom: '2rem',
+              maxWidth: '38rem',
+            }}
+          >
+            I build secure Spring Boot backends and ship React frontends and LLM pipelines on top. CDAC PG-DAC 2025 · React/TypeScript at HT Labs (OTTplay).
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-            <a href="mailto:onkardoke9696@gmail.com" style={{ background: 'var(--accent)', color: 'var(--bg)', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, fontSize: '0.95rem', transition: 'all 0.2s', boxShadow: '0 4px 14px 0 rgba(16, 185, 129, 0.39)' }}>
-              Hire for Freelance
+          <div
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              marginTop: '1.5rem',
+              marginBottom: '2rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <a
+              href="#projects"
+              style={{
+                backgroundColor: 'var(--accent)',
+                color: '#090d16',
+                padding: '0.75rem 1.6rem',
+                borderRadius: '8px',
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                boxShadow: '0 4px 14px rgba(16, 185, 129, 0.25)',
+              }}
+            >
+              View Projects ↓
             </a>
-            <a href="/resume.pdf" target="_blank" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', color: 'var(--text-primary)', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 500, fontSize: '0.95rem', transition: 'all 0.2s' }}>
-              Download Resume
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                padding: '0.75rem 1.6rem',
+                borderRadius: '8px',
+                fontWeight: 500,
+                fontSize: '0.95rem',
+                transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+              }}
+            >
+              Download Resume ↗
+            </a>
+            <a
+              href="mailto:onkardoke9696@gmail.com"
+              style={{
+                backgroundColor: 'transparent',
+                border: '1px solid var(--border)',
+                color: 'var(--text-secondary)',
+                padding: '0.75rem 1.25rem',
+                borderRadius: '8px',
+                fontWeight: 500,
+                fontSize: '0.95rem',
+                transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+              }}
+            >
+              <Envelope /> Contact
             </a>
           </div>
 
-          <div className="social-links">
+          <div className="social-links" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
             <a href={PERSONAL.github} target="_blank" rel="noopener noreferrer" className="social-link">
-              <Github /> GitHub
+              <Github /> GitHub (OmDoke)
             </a>
             <a href={PERSONAL.linkedin} target="_blank" rel="noopener noreferrer" className="social-link">
               <Linkedin /> LinkedIn
             </a>
-            <a href={PERSONAL.telegram} target="_blank" rel="noopener noreferrer" className="social-link">
-              <Monitor /> Telegram
-            </a>
-            <a href={PERSONAL.website} target="_blank" rel="noopener noreferrer" className="social-link">
-              <Code /> Portfolio
+            <a href={`mailto:${PERSONAL.email}`} className="social-link">
+              <Envelope /> {PERSONAL.email}
             </a>
           </div>
         </div>
 
-        <div className="fade-in-up" style={{ animationDelay: '0.08s', width: '100%', maxWidth: '400px' }}>
-          <svg viewBox="0 0 1273 906" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto', opacity: 0.8 }}>
-            <g>
-              <path d="M318.587 315.483V510.936L477.544 431.391V236.949M318.587 315.483L159.63 236.949M318.587 315.483L477.544 236.949M318.587 315.483V509.925L159.63 589.469M318.587 315.483L159.63 237.286L0.673828 315.483M318.587 315.483L159.63 394.016M477.544 236.949L318.587 158.753L159.63 236.949M477.544 236.949V432.402M477.544 236.949L318.587 158.416L477.544 80.2192L636.5 158.416L477.544 236.949ZM159.63 236.949V79.5451M159.63 589.469V394.016M159.63 589.469L0.673828 509.925V315.483M0.673828 315.483L159.63 394.016M159.63 79.5451L318.587 1.34863L477.544 79.5451L318.587 158.079L159.63 79.5451ZM795.457 395.701V237.286M795.457 237.286L636.5 159.09L477.544 237.286M795.457 237.286L636.5 315.82M477.544 237.286V431.728L601.139 491.762M477.544 237.286L636.5 315.82M636.5 315.82V472.887M954.414 668.003V473.561M954.414 473.561L795.457 395.364L636.5 473.561L795.457 552.094M954.414 473.561L795.457 552.094M954.414 473.561V669.014M954.414 473.561L795.457 395.027L954.414 316.831L1113.37 395.027L954.414 473.561ZM795.457 552.094L636.5 473.898L477.544 552.094M795.457 552.094L636.5 630.628M477.544 552.094V746.534L636.5 826.078V630.628M477.544 552.094L636.5 630.628M795.457 709.498V904.949M795.457 709.498L636.5 630.965M795.457 709.498L954.414 630.965M795.457 904.949L954.414 825.404V630.965M795.457 904.949L636.5 825.404V630.965M636.5 630.965L795.457 552.768L954.414 630.965M1113.37 552.431V747.882M1113.37 552.431L954.414 473.898M1113.37 552.431L1272.33 473.898M1113.37 747.882L1272.33 668.34V473.898M1113.37 747.882L954.414 668.34V473.898M954.414 473.898L1113.37 395.701L1272.33 473.898" stroke="var(--accent)" strokeOpacity="0.6" strokeWidth="2"></path>
-            </g>
-            <path d="M154 586C154 583.239 156.239 581 159 581V581C161.761 581 164 583.239 164 586V586C164 588.761 161.761 591 159 591V591C156.239 591 154 588.761 154 586V586Z" fill="var(--accent)"></path>
-            <path d="M154 393C154 390.239 156.239 388 159 388V388C161.761 388 164 390.239 164 393V393C164 395.761 161.761 398 159 398V398C156.239 398 154 395.761 154 393V393Z" fill="var(--accent)"></path>
-            <path d="M788 551C788 548.239 790.239 546 793 546V546C795.761 546 798 548.239 798 551V551C798 553.761 795.761 556 793 556V556C790.239 556 788 553.761 788 551V551Z" fill="var(--accent)"></path>
-            <path d="M1108 551C1108 548.239 1110.24 546 1113 546V546C1115.76 546 1118 548.239 1118 551V551C1118 553.761 1115.76 556 1113 556V556C1110.24 556 1108 553.761 1108 551V551Z" fill="var(--accent)"></path>
-            <path d="M1108 398C1108 395.239 1110.24 393 1113 393V393C1115.76 393 1118 395.239 1118 398V398C1118 400.761 1115.76 403 1113 403V403C1110.24 403 1108 400.761 1108 398V398Z" fill="var(--accent)"></path>
-            <path d="M788 237C788 234.239 790.239 232 793 232V232C795.761 232 798 234.239 798 237V237C798 239.761 795.761 242 793 242V242C790.239 242 788 239.761 788 237V237Z" fill="var(--accent)"></path>
-          </svg>
+        {/* Clean Engineering Architecture Snapshot Card (Replacing Isometric Wireframe) */}
+        <div
+          className="fade-in-up"
+          style={{
+            animationDelay: '0.08s',
+            width: '100%',
+            maxWidth: '430px',
+            backgroundColor: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
+            borderRadius: '14px',
+            padding: '1.5rem',
+            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
+          }}
+        >
+          {/* Card Header: Terminal Dots */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingBottom: '1rem',
+              borderBottom: '1px solid var(--border)',
+              marginBottom: '1rem',
+            }}
+          >
+            <div style={{ display: 'flex', gap: '6px' }}>
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#10b981' }} />
+            </div>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.04em',
+              }}
+            >
+              systems-manifest.json
+            </span>
+          </div>
+
+          {/* Architecture Items */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            <div
+              style={{
+                backgroundColor: 'var(--bg)',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                padding: '0.75rem 0.9rem',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
+                  // BACKEND SERVICE
+                </span>
+                <span style={{ fontSize: '0.7rem', color: '#10b981', fontFamily: 'var(--font-mono)' }}>
+                  ● 33 tests passed
+                </span>
+              </div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                Spring Boot 3 · Java 17
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
+                22 REST Endpoints · Redis Session Auth · BCrypt · MySQL
+              </div>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: 'var(--bg)',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                padding: '0.75rem 0.9rem',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#a78bfa' }}>
+                  // RAG PIPELINE
+                </span>
+                <span style={{ fontSize: '0.7rem', color: '#10b981', fontFamily: 'var(--font-mono)' }}>
+                  ● MMR Top-8
+                </span>
+              </div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                FastAPI · LangChain · Pinecone
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
+                3072-dim Embeddings · Recursive Splitter (1000/200)
+              </div>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: 'var(--bg)',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                padding: '0.75rem 0.9rem',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#34d399' }}>
+                  // PRODUCTION CMS
+                </span>
+                <span style={{ fontSize: '0.7rem', color: '#34d399', fontFamily: 'var(--font-mono)' }}>
+                  HT Labs Pune
+                </span>
+              </div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                React · Redux Toolkit · TypeScript
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
+                OTTplay Editorial CMS · Reusable Component Architecture
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingTop: '0.4rem',
+                fontSize: '0.75rem',
+                fontFamily: 'var(--font-mono)',
+                color: 'var(--text-secondary)',
+              }}
+            >
+              <span>Docker Compose: 4 services</span>
+              <span style={{ color: 'var(--accent)' }}>CDAC Certified (2025)</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="fade-in-up" style={{ animationDelay: '0.14s', marginBottom: '4rem' }}>
-        <h2 className="section-title">Contribution Graph</h2>
+      {/* GitHub Calendar */}
+      <div className="fade-in-up" style={{ animationDelay: '0.14s', marginBottom: '3.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1rem' }}>
+          <h2 className="section-title" style={{ fontSize: '1.4rem', marginBottom: 0 }}>
+            Engineering Activity
+          </h2>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+            github.com/OmDoke
+          </span>
+        </div>
         <div className="graph-container">
-          <GitHubCalendar 
-            username="OmDoke" 
-            theme={{ 
+          <GitHubCalendar
+            username="OmDoke"
+            theme={{
               light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-              dark: ['#27272a', '#064e3b', '#047857', '#059669', '#10b981']
+              dark: ['#27272a', '#064e3b', '#047857', '#059669', '#10b981'],
             }}
             colorScheme="dark"
-            labels={{ totalCount: "{{count}} contributions in the last year" }}
+            labels={{ totalCount: '{{count}} contributions in the last year' }}
           />
         </div>
       </div>

@@ -4,30 +4,31 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid #1e293b',
+        borderTop: '1px solid var(--border)',
         padding: '2.5rem 2rem',
         textAlign: 'center',
         position: 'relative',
         zIndex: 1,
+        marginTop: '3rem',
       }}
     >
       <div
         style={{
-          color: '#94a3b8',
+          color: 'var(--text-secondary)',
           fontSize: '0.9rem',
           marginBottom: 6,
         }}
       >
-        Built with ♥ by {PERSONAL.name} · React · Spring Boot · Java · AI
+        {PERSONAL.name} · Full Stack Engineer · Java / Spring Boot · React / TypeScript · GenAI / RAG
       </div>
       <div
         style={{
-          color: '#475569',
+          color: 'var(--text-secondary)',
           fontSize: '0.78rem',
-          fontFamily: 'JetBrains Mono, monospace',
+          fontFamily: 'var(--font-mono)',
         }}
       >
-        © 2026 {PERSONAL.name}. All rights reserved.
+        © {new Date().getFullYear()} {PERSONAL.name} · Pune, Maharashtra · Built with React & Vite
       </div>
     </footer>
   );

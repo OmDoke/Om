@@ -14,11 +14,10 @@ function getAIResponse(msg: string): string {
     m.includes('tech') ||
     m.includes('know') ||
     m.includes('language') ||
-    m.includes('mern') ||
     m.includes('java') ||
+    m.includes('spring') ||
     m.includes('react') ||
     m.includes('node') ||
-    m.includes('mongo') ||
     m.includes('stack')
   )
     return AI_RESPONSES.skills;
@@ -26,9 +25,9 @@ function getAIResponse(msg: string): string {
     m.includes('project') ||
     m.includes('build') ||
     m.includes('smartbank') ||
+    m.includes('neurosearch') ||
     m.includes('ottplay') ||
-    m.includes('waste') ||
-    m.includes('spring') ||
+    m.includes('careeros') ||
     m.includes('work')
   )
     return AI_RESPONSES.projects;
@@ -47,9 +46,6 @@ function getAIResponse(msg: string): string {
     m.includes('email') ||
     m.includes('reach') ||
     m.includes('linkedin') ||
-    m.includes('phone') ||
-    m.includes('whatsapp') ||
-    m.includes('number') ||
     m.includes('github')
   )
     return AI_RESPONSES.contact;
@@ -58,7 +54,7 @@ function getAIResponse(msg: string): string {
     m.includes('open') ||
     m.includes('looking') ||
     m.includes('hire') ||
-    m.includes('freelance') ||
+    m.includes('full-time') ||
     m.includes('collaborat') ||
     m.includes('opportunit')
   )
@@ -66,14 +62,7 @@ function getAIResponse(msg: string): string {
   return AI_RESPONSES.default;
 }
 
-
-const CONTACT_LINKS = [
-  {
-    icon: '📱',
-    label: 'Phone / WhatsApp',
-    value: PERSONAL.phone,
-    href: `tel:${PERSONAL.phone}`,
-  },
+const ALL_CONTACT_LINKS = [
   {
     icon: '📧',
     label: 'Email',
@@ -92,13 +81,19 @@ const CONTACT_LINKS = [
     value: 'github.com/OmDoke',
     href: PERSONAL.github,
   },
+  {
+    icon: '📍',
+    label: 'Location',
+    value: PERSONAL.location,
+    href: '#',
+  },
 ];
 
 export default function Contact() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'ai',
-      text: "Hey there! 👋 I'm Onkar's AI assistant. Ask me about his MERN skills, projects, or availability!",
+      text: "Hey there! 👋 I'm Onkar's AI assistant. Ask me about his Java/Spring Boot backend work, React experience at HT Labs Pune, or his RAG systems!",
     },
   ]);
   const [input, setInput] = useState('');
@@ -107,7 +102,6 @@ export default function Contact() {
   const endRef = useRef<HTMLDivElement>(null);
   const { speak } = useSpeech();
   const sectionRef = useRef<HTMLDivElement>(null);
-  // Skip scrollIntoView on first render — only scroll when new messages arrive
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -147,72 +141,71 @@ export default function Contact() {
         () => setIsSpeaking(true),
         () => setIsSpeaking(false)
       );
-    }, 600);
+    }, 450);
   };
 
   return (
-    <section
-      id="contact"
-      style={{
-        background:
-          'linear-gradient(180deg, transparent, rgba(6,182,212,0.03), transparent)',
-      }}
-    >
+    <section id="contact" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
       <div className="section-inner">
-        <div className="section-label">// connect</div>
-        <h2 className="section-title">Let's Build Something</h2>
-
         <div
-          ref={sectionRef}
-          className="reveal responsive-contact-grid"
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.8rem',
+            color: 'var(--accent)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: '0.5rem',
+          }}
         >
+          // connect
+        </div>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
+          Get In Touch
+        </h2>
+        <p
+          className="text-muted"
+          style={{
+            fontSize: '1rem',
+            maxWidth: '680px',
+            marginBottom: '2.5rem',
+            lineHeight: 1.6,
+          }}
+        >
+          Open to full-time Software Engineer, Java Backend, and Full Stack roles in Pune (on-site / hybrid) or remote.
+        </p>
+
+        <div ref={sectionRef} className="reveal responsive-contact-grid">
           {/* ── LEFT — Contact links ─────────────────────────────────────── */}
           <div>
-            <p
-              style={{
-                color: '#94a3b8',
-                marginBottom: '1.5rem',
-                lineHeight: 1.7,
-                fontSize: '1rem',
-              }}
-            >
-              Open to full-time roles, freelance projects, and interesting
-              collaborations. Let's talk!
-            </p>
-
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem',
-              }}
-            >
-              {CONTACT_LINKS.map((c) => (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              {ALL_CONTACT_LINKS.filter((c) => Boolean(c.value)).map((c) => (
                 <a
                   key={c.label}
                   href={c.href}
-                  target={c.href.startsWith('mailto') ? undefined : '_blank'}
+                  target={c.href.startsWith('mailto') || c.href === '#' ? undefined : '_blank'}
                   rel="noreferrer"
-                  className="card contact-link"
                   style={{
+                    backgroundColor: 'var(--bg-secondary)',
+                    border: '1px solid var(--border)',
                     padding: '1rem 1.25rem',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '1rem',
-                    borderRadius: 16,
+                    borderRadius: '12px',
                     transition: 'border-color 0.2s, background 0.2s',
                   }}
                 >
                   <div
                     style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 12,
-                      background: 'rgba(99,102,241,0.15)',
+                      width: 42,
+                      height: 42,
+                      borderRadius: 10,
+                      background: 'rgba(16, 185, 129, 0.1)',
+                      border: '1px solid rgba(16, 185, 129, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '1.25rem',
+                      fontSize: '1.2rem',
                       flexShrink: 0,
                     }}
                   >
@@ -222,20 +215,20 @@ export default function Contact() {
                     <div
                       style={{
                         fontSize: '0.72rem',
-                        color: '#475569',
-                        marginBottom: 3,
-                        textTransform: 'uppercase' as const,
+                        color: 'var(--text-secondary)',
+                        marginBottom: 2,
+                        textTransform: 'uppercase',
                         letterSpacing: '0.06em',
-                        fontFamily: 'JetBrains Mono, monospace',
+                        fontFamily: 'var(--font-mono)',
                       }}
                     >
                       {c.label}
                     </div>
                     <div
                       style={{
-                        fontSize: '0.9rem',
-                        fontWeight: 500,
-                        color: '#f1f5f9',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        color: 'var(--text-primary)',
                       }}
                     >
                       {c.value}
@@ -246,37 +239,42 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ── RIGHT — AI Chat widget ────────────────────────────────────── */}
+          {/* ── RIGHT — AI Assistant widget ─────────────────────────────────── */}
           <div
             style={{
-              background: '#111827',
-              border: '1px solid #1e293b',
-              borderRadius: 16,
+              backgroundColor: 'var(--bg-secondary)',
+              border: '1px solid var(--border)',
+              borderRadius: '14px',
               overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             {/* Chat header */}
             <div
               style={{
                 padding: '1rem 1.25rem',
-                borderBottom: '1px solid #1e293b',
+                borderBottom: '1px solid var(--border)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 10,
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
               }}
             >
               <div
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
+                  width: 34,
+                  height: 34,
+                  borderRadius: '8px',
+                  background: 'var(--bg-tertiary)',
+                  border: '1px solid var(--border-hover)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '0.8rem',
                   fontWeight: 700,
-                  color: '#fff',
+                  color: 'var(--accent)',
+                  fontFamily: 'var(--font-mono)',
                   flexShrink: 0,
                 }}
               >
@@ -287,22 +285,23 @@ export default function Contact() {
                   style={{
                     fontSize: '0.9rem',
                     fontWeight: 600,
-                    color: '#f1f5f9',
+                    color: 'var(--text-primary)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 6,
                   }}
                 >
-                  AI Om {isSpeaking && '🔊'}
+                  Onkar's Assistant {isSpeaking && '🔊'}
                 </div>
                 <div
                   style={{
                     fontSize: '0.72rem',
-                    color: '#10b981',
+                    color: '#34d399',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 4,
+                    gap: 5,
                     marginTop: 2,
+                    fontFamily: 'var(--font-mono)',
                   }}
                 >
                   <span
@@ -310,11 +309,11 @@ export default function Contact() {
                       display: 'inline-block',
                       width: 6,
                       height: 6,
-                      background: '#10b981',
+                      background: 'var(--accent)',
                       borderRadius: '50%',
                     }}
                   />
-                  Online now
+                  Online · Verified Facts
                 </div>
               </div>
             </div>
@@ -324,7 +323,7 @@ export default function Contact() {
               className="chat-messages"
               style={{
                 padding: '1rem',
-                height: 230,
+                height: 240,
                 overflowY: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
@@ -336,22 +335,28 @@ export default function Contact() {
                   key={i}
                   style={{
                     maxWidth: '85%',
-                    padding: '0.6rem 1rem',
+                    padding: '0.65rem 1rem',
                     borderRadius:
                       m.role === 'ai'
                         ? '4px 12px 12px 12px'
                         : '12px 12px 4px 12px',
-                    fontSize: '0.875rem',
+                    fontSize: '0.86rem',
                     lineHeight: 1.55,
-                    alignSelf:
-                      m.role === 'ai' ? 'flex-start' : 'flex-end',
-                    background:
+                    alignSelf: m.role === 'ai' ? 'flex-start' : 'flex-end',
+                    backgroundColor:
                       m.role === 'ai'
-                        ? '#131929'
-                        : 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-                    color: '#f1f5f9',
-                    wordBreak: 'break-word' as const,
-                    animation: 'fadeInUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        ? 'var(--bg)'
+                        : 'var(--accent)',
+                    color:
+                      m.role === 'ai'
+                        ? 'var(--text-primary)'
+                        : '#090d16',
+                    fontWeight: m.role === 'user' ? 600 : 400,
+                    border:
+                      m.role === 'ai'
+                        ? '1px solid var(--border)'
+                        : 'none',
+                    wordBreak: 'break-word',
                   }}
                 >
                   {m.text}
@@ -361,11 +366,12 @@ export default function Contact() {
                 <div
                   style={{
                     alignSelf: 'flex-start',
-                    background: '#131929',
+                    backgroundColor: 'var(--bg)',
+                    border: '1px solid var(--border)',
                     borderRadius: '4px 12px 12px 12px',
                     padding: '0.6rem 1rem',
                     fontSize: '0.85rem',
-                    color: '#475569',
+                    color: 'var(--text-secondary)',
                   }}
                 >
                   <span style={{ letterSpacing: 3 }}>···</span>
@@ -378,50 +384,48 @@ export default function Contact() {
             <div
               style={{
                 padding: '0.75rem 1rem',
-                borderTop: '1px solid #1e293b',
+                borderTop: '1px solid var(--border)',
                 display: 'flex',
                 gap: 8,
+                backgroundColor: 'rgba(255, 255, 255, 0.01)',
               }}
             >
               <input
                 id="chat-input"
+                aria-label="Ask a question about Onkar's skills or projects"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendChat()}
-                placeholder="Ask me anything..."
+                placeholder="Ask about Spring Boot, RAG, or experience..."
                 style={{
                   flex: 1,
-                  background: '#0d1220',
-                  border: '1px solid #1e293b',
-                  color: '#f1f5f9',
+                  background: 'var(--bg)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-primary)',
                   borderRadius: 8,
-                  padding: '0.55rem 0.75rem',
-                  fontSize: '16px', /* Emil Kowalski rule: >=16px prevents iOS Safari auto-zoom */
+                  padding: '0.55rem 0.85rem',
+                  fontSize: '16px',
                   outline: 'none',
-                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontFamily: 'var(--font-sans)',
                   transition: 'border-color 0.2s',
                 }}
-                onFocus={(e) =>
-                  (e.currentTarget.style.borderColor = '#6366f1')
-                }
-                onBlur={(e) =>
-                  (e.currentTarget.style.borderColor = '#1e293b')
-                }
+                onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--accent)')}
+                onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--border)')}
               />
               <button
                 id="chat-send"
                 className="send-btn"
+                aria-label="Send message"
                 onClick={sendChat}
                 style={{
-                  background: '#6366f1',
+                  backgroundColor: 'var(--accent)',
                   border: 'none',
-                  color: '#fff',
+                  color: '#090d16',
                   borderRadius: 8,
-                  padding: '0.5rem 1.1rem',
-                  fontSize: '0.9rem',
+                  padding: '0.5rem 1.2rem',
+                  fontSize: '0.88rem',
                   cursor: 'pointer',
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontWeight: 500,
+                  fontWeight: 600,
                   transition: 'background 0.2s',
                 }}
               >

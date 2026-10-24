@@ -20,7 +20,7 @@ export default function Stats() {
   return (
     <section
       style={{
-        padding: '1rem 2rem 3.5rem',
+        padding: '1rem 0 3.5rem',
         position: 'relative',
         zIndex: 1,
       }}
@@ -29,37 +29,42 @@ export default function Stats() {
         ref={ref}
         className="reveal stats-grid"
         style={{
-          maxWidth: 1100,
-          margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '1.5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1.25rem',
         }}
       >
         {STATS.map((s) => (
           <div
             key={s.label}
-            className="card"
             style={{
-              padding: '1.5rem 1rem',
+              backgroundColor: 'var(--bg-secondary)',
+              border: '1px solid var(--border)',
+              padding: '1.5rem 1.25rem',
               textAlign: 'center',
               borderRadius: 12,
             }}
           >
             <div
-              className="gradient-text"
-              style={{ fontSize: '2.2rem', fontWeight: 700, lineHeight: 1 }}
+              style={{
+                fontSize: '2.2rem',
+                fontWeight: 800,
+                lineHeight: 1,
+                color: 'var(--accent)',
+                fontFamily: 'var(--font-mono)',
+              }}
             >
               {s.num}
             </div>
             <div
               style={{
-                fontSize: '0.78rem',
-                color: '#475569',
-                marginTop: 6,
+                fontSize: '0.8rem',
+                color: 'var(--text-secondary)',
+                marginTop: 8,
                 textTransform: 'uppercase',
                 letterSpacing: '0.06em',
-                fontFamily: 'JetBrains Mono, monospace',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 500,
               }}
             >
               {s.label}

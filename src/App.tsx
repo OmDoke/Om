@@ -6,6 +6,7 @@ import Stats from './components/Stats';
 import SkillSection from './components/SkillSection';
 import ProjectCard from './components/ProjectCard';
 import ExperienceCard from './components/ExperienceCard';
+import Education from './components/Education';
 import NeuroChatWidget from './components/NeuroChatWidget';
 import Footer from './components/Footer';
 
@@ -25,6 +26,7 @@ export default function App() {
           <SkillSection />
           <ProjectCard />
           <ExperienceCard />
+          <Education />
         </div>
         <NeuroChatWidget />
       </main>

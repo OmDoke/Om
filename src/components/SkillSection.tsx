@@ -1,111 +1,154 @@
 import { useEffect, useRef } from 'react';
-import { SKILLS } from '../data/portfolioData';
+import { SKILL_GROUPS } from '../data/portfolioData';
 
 export default function Skills() {
-  const gridRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          grid.classList.add('visible');
-          // Stagger-animate each progress bar using GPU transform scaleX
-          grid
-            .querySelectorAll<HTMLDivElement>('.skill-fill')
-            .forEach((bar, i) => {
-              const level = SKILLS[i]?.level ?? 80;
-              setTimeout(() => {
-                bar.style.transform = `scaleX(${level / 100})`;
-              }, 40 + i * 35);
-            });
+          el.classList.add('visible');
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
-    obs.observe(grid);
+    obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="skills">
+    <section id="skills" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
       <div className="section-inner">
-        <div className="section-label">// expertise</div>
-        <h2 className="section-title">Skills & Technologies</h2>
-        <p className="section-sub">
-          A stack built for shipping production-grade, AI-powered applications
-          end to end.
+        <div
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.8rem',
+            color: 'var(--accent)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: '0.5rem',
+          }}
+        >
+          // technical matrix
+        </div>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
+          Technical Capabilities
+        </h2>
+        <p
+          className="text-muted"
+          style={{
+            fontSize: '1rem',
+            maxWidth: '680px',
+            marginBottom: '2.5rem',
+            lineHeight: 1.6,
+          }}
+        >
+          Engineered across the stack: production-ready Spring Boot microservices, component-driven React frontends, and retrieval-augmented LLM architectures.
         </p>
 
         <div
-          ref={gridRef}
-          id="skillsGrid"
+          ref={sectionRef}
           className="reveal"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-            gap: '1rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            gap: '1.5rem',
           }}
         >
-          {SKILLS.map((skill) => (
+          {SKILL_GROUPS.map((group) => (
             <div
-              key={skill.name}
-              className="card skill-card"
+              key={group.category}
               style={{
-                padding: '1rem',
-                borderRadius: 12,
+                backgroundColor: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
+                borderRadius: '12px',
+                padding: '1.75rem 1.5rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 6,
-                transition: 'border-color 0.2s, background 0.2s',
+                gap: '1rem',
+                transition: 'border-color 0.2s ease, transform 0.2s ease',
               }}
             >
-              <div style={{ fontSize: '1.5rem', lineHeight: 1 }}>
-                {skill.icon}
-              </div>
               <div
                 style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  gap: '0.5rem',
                 }}
               >
-                {skill.name}
-              </div>
-              {/* Progress bar track */}
-              <div
-                style={{
-                  height: 3,
-                  background: 'var(--bg-tertiary)',
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  marginTop: 2,
-                }}
-              >
-                <div
-                  className="skill-fill"
+                <h3
                   style={{
-                    height: '100%',
-                    width: '100%',
-                    transform: 'scaleX(0)',
-                    transformOrigin: 'left',
-                    background: `linear-gradient(90deg, ${skill.color}88, ${skill.color})`,
-                    borderRadius: 2,
-                    transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
-                    willChange: 'transform',
+                    fontSize: '1.15rem',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    letterSpacing: '-0.01em',
                   }}
-                />
+                >
+                  {group.category}
+                </h3>
+                <span
+                  style={{
+                    fontSize: '0.7rem',
+                    fontFamily: 'var(--font-mono)',
+                    color: 'var(--accent)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    border: '1px solid rgba(16, 185, 129, 0.25)',
+                    padding: '3px 8px',
+                    borderRadius: '999px',
+                    whiteSpace: 'nowrap',
+                    fontWeight: 600,
+                  }}
+                >
+                  {group.badge}
+                </span>
               </div>
-              <div
+
+              <p
                 style={{
-                  fontSize: '0.7rem',
+                  fontSize: '0.85rem',
                   color: 'var(--text-secondary)',
-                  fontFamily: 'JetBrains Mono, monospace',
+                  lineHeight: 1.5,
+                  minHeight: '2.6rem',
                 }}
               >
-                {skill.level}%
+                {group.description}
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
+                  marginTop: 'auto',
+                  paddingTop: '0.5rem',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                }}
+              >
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      backgroundColor: 'var(--bg-tertiary)',
+                      border: '1px solid var(--border-hover)',
+                      borderRadius: '6px',
+                      padding: '4px 10px',
+                      fontSize: '0.8rem',
+                      fontWeight: 500,
+                      color: 'var(--text-primary)',
+                    }}
+                  >
+                    <span style={{ fontSize: '0.9rem', lineHeight: 1 }}>{skill.icon}</span>
+                    <span>{skill.name}</span>
+                  </span>
+                ))}
               </div>
             </div>
           ))}
